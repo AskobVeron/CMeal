@@ -16,9 +16,9 @@
                 <div>
                     <a class="a_nav_tab brand" id="nav_crmeal" href="#">CMeal</a>
                     <a class="a_nav_tab" id="nav_saves" href="#">Сохранения</a>
-                    <button id="submenu_toggle" class="navbar-toggler" type="button">
+                    <input id="submenu_toggle" class="navbar-toggler" type="submit">
                         <span class="navbar-toggler-icon"></span>
-                    </button>
+                    </input>
                     <div id="submenu">
                         <ul>
                             <li class="navbarli"><a class="under_menu" id="nav_versions" href="#">Версии</a></li>
@@ -140,13 +140,13 @@
                     </p>
             </tr>
         </table>
-        <button class="btn btn-outline-success data1_buttons" id="id_add_ingridient">Добавить</button>
-        <button class="btn btn-outline-primary data1_buttons" id="id_save_data1">Сохранить ↑↑</button><br>
-        <button class="btn btn-outline-dark data1_buttons" id="id_clear_data1_res">Очистить</button>
+        <input type="submit" class="btn btn-outline-success data1_buttons" id="id_add_ingridient" value="Добавить"/>
+        <input type="submit" class="btn btn-outline-primary data1_buttons" id="id_save_data1" value="Сохранить ↑↑"/><br>
+        <input type="submit" class="btn btn-outline-dark data1_buttons" id="id_clear_data1_res" value="Очистить"/>
         <hr>
-        <button class="btn btn-outline-secondary data2_buttons" id="del_last_data2_res">Отменить</button>
-        <button class="btn btn-outline-danger data2_buttons" id="clear_all_data2">Очистить всё</button>
-        <button class="btn btn-outline-primary data2_buttons" id="id_save_data2">Сохранить ↓↓</button>
+        <input type="submit" class="btn btn-outline-secondary data2_buttons" id="del_last_data2_res" value="Отменить"/>
+        <input type="submit" class="btn btn-outline-danger data2_buttons" id="clear_all_data2" value="Очистить всё"/>
+        <input type="submit" class="btn btn-outline-primary data2_buttons" id="id_save_data2" value="Сохранить ↓↓"/>
         <div class="table-responsive">
             <table class="table" id="data2">
                 <thead class="thead-dark">
