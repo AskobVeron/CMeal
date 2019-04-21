@@ -2,7 +2,7 @@ var res100 = new Array(5);
 var idNumber = 1;
 var result_minus_tr = new Array(5);
 
-//
+/**/
 
 function russian() {
     $('#nav_saves').text('Сохранения');
@@ -28,7 +28,7 @@ function russian() {
     $("#submenu").css({ 'display': 'none' });
 }
 
-//
+/**/
 
 function english() {
     $('#nav_saves').text('Saves');
@@ -50,24 +50,24 @@ function english() {
     $('#del_last_data2_res').text('Delete Last');
     $('#clear_all_data2').text('Clear All');
     $('#id_clear_data1_res').text('Clear');
-    $('#id_clear_data1_res').css({'margin-top':''});
+    $('#id_clear_data1_res').css({ 'margin-top': '' });
     $('.under2_menu').css({ 'display': 'none' });
     $("#submenu").css({ 'display': 'none' });
 }
 
-//
+/**/
 
 function open_submenu() {
     $("#submenu").toggle();
 }
 
-//
+/**/
 
 function open_languages() {
     $('.under2_menu').toggle()
 }
 
-//
+/**/
 
 function open_versions() {
     $('#body').css({ 'display': 'none' });
@@ -80,7 +80,7 @@ function open_versions() {
     $("#submenu").css({ 'display': 'none' });
 }
 
-//
+/**/
 
 function open_crmeal() {
     $('#body').css({ 'display': 'block' });
@@ -93,7 +93,7 @@ function open_crmeal() {
     $("#submenu").css({ 'display': 'none' });
 }
 
-//
+/**/
 
 function open_saves() {
     $('#body').css({ 'display': 'none' });
@@ -107,7 +107,7 @@ function open_saves() {
     $("#submenu").css({ 'display': 'none' });
 }
 
-//
+/**/
 
 function clear_data1_res() {
     proteins_data1_res.innerText = '0';
@@ -122,7 +122,7 @@ function clear_data1_res() {
     $("#id_weight_data1").val(null);
 }
 
-//
+/**/
 
 function result_in100g() {
     var factor = $("#weight_total_data2_res").val() / 100;
@@ -140,7 +140,7 @@ function result_in100g() {
     $("#ccal100_total_data2_res").val(res100[4]);
 }
 
-//
+/**/
 
 function addIngridient() {
     var dish = {
@@ -187,7 +187,7 @@ function addIngridient() {
     }
 }
 
-//
+/**/
 
 function Del_last() {
     var result = [
@@ -231,7 +231,7 @@ function Del_last() {
     $('#data2_body tr').last().remove();
 }
 
-//
+/**/
 
 function setStorage() {
     localStorage.setItem('A_prots', $('#total_data2  .td_total_data2:eq(0)').text());
@@ -241,14 +241,14 @@ function setStorage() {
     localStorage.setItem('E_ccal', $('#total_data2  .td_total_data2:eq(4)').text());
 }
 
-//
+/**/
 
 function name() {
     $('#res_100').text($('#res_name_create').val());
     localStorage.setItem('name', $('#res_name_create').val());
 }
 
-//
+/**/
 
 function getStorage() {
     $('#total_data2  .td_total_data2:eq(0)').text(localStorage.getItem('A_prots'));
@@ -263,7 +263,7 @@ function getStorage() {
     name();
 }
 
-//
+/**/
 
 function calculate_data1_res() {
     var dish = {
@@ -284,7 +284,7 @@ function calculate_data1_res() {
     $("#ccal_data1_res").val(ccal);
 }
 
-//
+/**/
 
 function Umbrien() {
     var dish_Total = [
@@ -311,7 +311,7 @@ function Umbrien() {
     idNumber++;
 }
 
-//
+/**/
 
 function Clear_all() {
     $('#res_name_create').val('');
@@ -328,95 +328,95 @@ function Clear_all() {
     setStorage();
 }
 
-//
+/**/
 
 $(document).ready(function() {
     getStorage();
 })
 
-//
+/**/
 
 $('#id_clear_data1_res').on("click", function() {
     clear_data1_res();
 })
 
-//
+/**/
 
 $(".non_button").keyup(function() {
     calculate_data1_res();
 })
 
-//
+/**/
 
 $("#id_add_ingridient").on("click", function() {
     Umbrien();
     addIngridient();
 })
 
-//
+/**/
 
 $('#res_name_create').keyup(function() {
     name();
 })
 
-//
+/**/
 
 $('#del_last_data2_res').on("click", function() {
     Del_last();
 })
 
-//
+/**/
 
 $("#id_add_ingridient, #del_last_data2_res, #clear_all_data2 ").on("click", function() {
     setStorage();
 })
 
-//
+/**/
 
 $('#clear_all_data2').on("click", function() {
     Clear_all();
 })
 
-//
+/**/
 
 $('#nav_versions').on('click', function() {
     open_versions();
 })
 
-//
+/**/
 
 $('#nav_crmeal').on('click', function() {
     open_crmeal();
 })
 
-//
+/**/
 
 $('#nav_saves').on('click', function() {
     open_saves();
 })
 
-//
+/**/
 
 $('#submenu_toggle').on('click', function() {
     open_submenu();
 })
 
-//
+/**/
 
 $('#submenu ul li:eq(1)').on('click', function() {
     open_languages();
 })
 
-//
+/**/
 
 $('#Russian').on('click', function() {
     russian();
 })
 
-//
+/**/
 
 $('#English').on('click', function() {
     english();
 })
 
-//
+/**/

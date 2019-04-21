@@ -5,8 +5,5 @@ if ($connection == false) {
 echo mysql_connect_error();
 exit();
 }
-
-$rq = idNumber;
-
-
+echo "stri5ng";
  ?>
