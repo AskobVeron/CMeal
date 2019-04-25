@@ -57,18 +57,6 @@ function english() {
 
 /**/
 
-function open_versions() {
-    $('.under2_menu').css({ 'display': 'none' })
-    $("#submenu").css({ 'display': 'none' });
-}
-
-function open_saves() {
-    $('.under2_menu').css({ 'display': 'none' })
-    $("#submenu").css({ 'display': 'none' });
-}
-
-/**/
-
 function open_submenu() {
     $("#submenu").toggle();
 }
@@ -373,14 +361,3 @@ $('#English').on('click', function() {
 
 /**/
 
-$('#nav_versions').on('click', function() {
-    open_versions();
-})
-
-/**/
-
-$('#nav_crmeal').on('click', function() {
-    open_crmeal();
-})
-
-/**/
