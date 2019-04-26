@@ -361,3 +361,22 @@ $('#English').on('click', function() {
 
 /**/
 
+$(document).ready(function() {
+    $('#id_save_data2').bind("click", function() {
+            $.ajax ({
+            url: '../includes/save_data1.php',
+            type: 'GET',
+            data: ({ 
+                prots_data2: $('#prot_total_data2_res').val(),
+                variable: idNumber
+            }),
+            dataType: 'html',
+            success: function() {
+                console.log('success');
+            }
+        });
+    })
+})
+
+/**/
+

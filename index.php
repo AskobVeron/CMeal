@@ -5,6 +5,8 @@
 <head>
 <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <script src="script/jquery-3.3.1.js" type="text/javascript">
+    </script>
     <link href="style/style.css" rel="stylesheet" type="text/css">
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
     <title>CMeal</title>
@@ -87,10 +89,15 @@
                 </td>
             </tr>
         </table>
-        <input class="btn btn-outline-primary data1_buttons" id="id_save_data1" type="submit" value="Сохранить ↑↑"> <input class="btn btn-outline-success data1_buttons" id="id_add_ingridient" type="submit" value="Добавить"><br>
-        <input class="btn btn-outline-dark data1_buttons" id="id_clear_data1_res" type="submit" value="Очистить">
+        <input class="btn btn-outline-primary data1_buttons" id="id_save_data1" type="submit" value="Сохранить ↑↑"> 
+        <button class="btn btn-outline-success data1_buttons" id="id_add_ingridient">Добавить</button><br>
+        <button class="btn btn-outline-dark data1_buttons" id="id_clear_data1_res">
+        Очистить</button>
         <hr>
-        <input class="btn btn-outline-secondary data2_buttons" id="del_last_data2_res" type="submit" value="Отменить"> <input class="btn btn-outline-danger data2_buttons" id="clear_all_data2" type="submit" value="Очистить всё"> <input class="btn btn-outline-primary data2_buttons" id="id_save_data2" type="submit" value="Сохранить ↓↓">
+        <button class="btn btn-outline-secondary data2_buttons" id="del_last_data2_res">Отменить</button>
+        <button class="btn btn-outline-danger data2_buttons" id="clear_all_data2">
+        Очистить всё</button>
+        <input class="btn btn-outline-primary data2_buttons" id="id_save_data2" type="submit" value="Сохранить ↓↓">
         <div class="table-responsive">
             <table class="table" id="data2">
                 <thead class="thead-dark">
@@ -141,8 +148,9 @@
             </table>
         </div>
     </div>
-    <script src="script/jquery-3.3.1.js" type="text/javascript">
-    </script>
+    <div>
+    	<p id="content"><?php include('includes/save_data1.php'); ?></p>
+    </div>
     <script src="script/script.js" type="text/javascript">
     </script>
 </body>
