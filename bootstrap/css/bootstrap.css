@@ -166,7 +166,7 @@ caption {
 	caption-side: bottom
 }
 th {
-	text-align: inherit
+	text-align: inherit;
 }
 label {
 	display: inline-block;
@@ -1318,17 +1318,18 @@ pre code {
 }
 .table {
 	width: 100%;
-	margin-bottom: 1rem;
+	/*margin-bottom: 1rem;*/
 	color: #212529
 }
 .table td, .table th {
 	padding: .75rem;
-	vertical-align: top;
+	/*vertical-align: top;*/
 	border-top: 1px solid #dee2e6
 }
 .table thead th {
-/*	vertical-align: bottom;
-	border-bottom: 2px solid #dee2e6*/
+	/*vertical-align: bottom;
+	border-bottom: 2px solid #dee2e6;*/
+	border-top: none;
 }
 .table tbody+tbody {
 	border-top: 2px solid #dee2e6
@@ -1963,7 +1964,6 @@ textarea.form-control {
 	font-weight: 400;
 	color: #212529;
 	text-align: center;
-	vertical-align: middle;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;

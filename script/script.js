@@ -69,6 +69,48 @@ function open_languages() {
 
 /**/
 
+function open_versions() {
+    $('#body').css({ 'display': 'none' });
+    $('#saves').css({ 'display': 'none' });
+    $('body').css({ 'background-color': '#F4F1F1' });
+    $('#versions').css({ 'display': 'block' });
+    $('#nav_crmeal').removeClass('active_nav');
+    $('#nav_saves').removeClass('active_nav');
+    $('.under2_menu').css({ 'display': 'none' })
+    $("#submenu").css({ 'display': 'none' });
+}
+
+/**/
+
+function open_crmeal() {
+    $('#body').css({ 'display': 'block' });
+    $('body').css({ 'background-color': '#FFFFFF' });
+    $('#versions').css({ 'display': 'none' });
+    $('#saves').css({ 'display': 'none' });
+    $('#nav_versions').removeClass('active_nav');
+    $('#nav_crmeal').addClass('active_nav');
+    $('#nav_saves').removeClass('active_nav');
+    $('.under2_menu').css({ 'display': 'none' })
+    $("#submenu").css({ 'display': 'none' });
+}
+
+/**/
+
+function open_saves() {
+    $('#body').css({ 'display': 'none' });
+    $('#versions').css({ 'display': 'none' });
+    $('#saves').css({ 'display': 'block' });
+    $('body').css({ 'background-color': '#FFFFFF' });
+    $('#nav_versions').removeClass('active_nav');
+    $('#nav_crmeal').removeClass('active_nav');
+    $('#nav_saves').addClass('active_nav');
+    $('.under2_menu').css({ 'display': 'none' })
+    $("#submenu").css({ 'display': 'none' });
+}
+
+
+/**/
+
 function clear_data1_res() {
     proteins_data1_res.innerText = '';
     fats_data1_res.innerText = '';
@@ -108,12 +150,12 @@ function addIngridient() {
         proteins: $("#id_proteins_data1").val(),
         fats: $("#id_fats_data1").val(),
         carbs: $("#id_carbs_data1").val(),
-        weight: $("#id_weight_data1").val() / 100,
+        weight: parseInt($("#id_weight_data1").val()),
         ccal: $("#ccal_data1_res").val()
     };
-    var proteins = Math.round(dish.proteins * dish.weight);
-    var fats = Math.round(dish.fats * dish.weight);
-    var carbs = Math.round(dish.carbs * dish.weight);
+    var proteins = Math.round(dish.proteins * (dish.weight /100));
+    var fats = Math.round(dish.fats * (dish.weight /100));
+    var carbs = Math.round(dish.carbs * (dish.weight /100));
     var ccal = Math.round((proteins * 4) + (fats * 9) + (carbs * 4));
     $("#proteins_data1_res").val(proteins);
     $("#fats_data1_res").val(fats);
@@ -129,7 +171,7 @@ function addIngridient() {
         $("#fats_total_data2_res").val(fats + fats2),
         $("#carbs_total_data2_res").val(carbs + carbs2),
         $("#ccal_total_data2_res").val(ccal + ccal2),
-        $("#weight_total_data2_res").val((dish.weight * 100) + weight2)
+        $("#weight_total_data2_res").val(dish.weight + weight2)
     ];
     result_in100g();
     if (isNaN(
@@ -288,7 +330,7 @@ function Clear_all() {
 /**/
 
 $(document).ready(function() {
-    getStorage();
+    getStorage();                           
 })
 
 /**/
@@ -334,6 +376,26 @@ $('#clear_all_data2').on("click", function() {
     Clear_all();
 })
 
+/**/
+
+$('#nav_versions').on('click', function(event) {
+    event.preventDefault();
+    open_versions();
+})
+
+/**/
+
+$('#nav_crmeal').on('click', function(event) {
+    event.preventDefault();
+    open_crmeal();
+})
+
+/**/
+
+$('#nav_saves').on('click', function(event) {
+    event.preventDefault();
+    open_saves();
+})
 
 /**/
 
@@ -343,40 +405,52 @@ $('#submenu_toggle').on('click', function() {
 
 /**/
 
-$('#submenu ul li:eq(1)').on('click', function() {
+$('#submenu ul li:eq(1)').on('click', function(event) {
+    event.preventDefault();
     open_languages();
 })
 
 /**/
 
-$('#Russian').on('click', function() {
+$('#Russian').on('click', function(event) {
+    event.preventDefault();
     russian();
 })
 
 /**/
 
-$('#English').on('click', function() {
+$('#nav_versions').on('click', function() {
+    $("#submenu").hide();
+})
+
+/**/
+
+$('#English').on('click', function(event) {
+    event.preventDefault();
     english();
 })
 
 /**/
 
-$(document).ready(function() {
-    $('#id_save_data2').bind("click", function() {
-            $.ajax ({
-            url: '../includes/save_data1.php',
-            type: 'GET',
-            data: ({ 
-                prots_data2: $('#prot_total_data2_res').val(),
-                variable: idNumber
-            }),
-            dataType: 'html',
-            success: function() {
-                console.log('success');
+    $('form').submit(function(event) {
+        event.preventDefault();
+        $.ajax({
+            type: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(result) {
+                alert(result);
+            },
+            error: function (result) {
+                alert(result);
             }
         });
-    })
-})
+    
+    });
 
 /**/
+
 
