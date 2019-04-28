@@ -1,5 +1,5 @@
 <?php 
-include ('DB_connection.php');
+include ('includes/DB_connection.php');
 
 $query = "SELECT * FROM $db_connection[database_name]";
  
