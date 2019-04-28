@@ -1,9 +1,9 @@
 <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-dark menu">
             <div class="container-fluid">
-                <div>
+                <div id="triple-top">
+                    <button class="navbar-toggler" id="submenu_toggle" type="button"><span class="navbar-toggler-icon"></span></button>
                     <a class="a_nav_tab brand" href="#" id="nav_crmeal">CMeal</a> 
                     <a class="a_nav_tab" href="#" target="blank" id="nav_saves">Сохранения</a> 
-                    <button class="navbar-toggler" id="submenu_toggle" type="button"><span class="navbar-toggler-icon"></span></button>
                     <div id="submenu">
                         <ul>
                             <li class="navbarli">
@@ -25,5 +25,6 @@
                         </ul>
                     </div>
                 </div>
+                    <a id="login" href="pages/login/">Войти</a>
             </div>
         </nav>

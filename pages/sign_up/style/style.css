@@ -1,0 +1,51 @@
+.navbarli {
+	list-style-type: none;
+}
+.navbar a{
+	color: white;
+	text-decoration: none;
+}
+.navbar a:hover{
+	transition: 0.3s;
+	color: #AEAEAE;
+	text-decoration: none;
+}
+.navbar {
+	margin-left: -10px;
+}
+.brand{
+	font-size: 20px;
+}
+.a_nav_tab{
+	margin-left: 10px;
+}
+#submenu{
+	display: none;
+	margin-top: 8px;
+}
+.under2_menu{
+	display: none;
+}
+.under_menu{
+	font-size: 14.5px;
+}
+.under2_menu{
+	font-size: 12px;
+}
+#first-row{
+	margin-top: 40%;
+	margin-left: 40px;
+	margin-right: 60px;
+}
+#regestration{
+	font-size: 20px;
+}
+#password{
+	margin-bottom: 10px;
+}
+#login{
+	margin-top: 0.8%;
+	margin-left: auto;
+	margin-bottom: auto;
+	height: auto;
+}

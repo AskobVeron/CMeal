@@ -24,8 +24,10 @@ function russian() {
     $('#del_last_data2_res').text('Отменить');
     $('#clear_all_data2').text('Очистить всё');
     $('#id_clear_data1_res').text('Очистить');
+    $('#login').text('Войти');
     $('.under2_menu').css({ 'display': 'none' });
     $("#submenu").css({ 'display': 'none' });
+
 }
 
 /**/
@@ -50,7 +52,7 @@ function english() {
     $('#del_last_data2_res').text('Delete Last');
     $('#clear_all_data2').text('Clear All');
     $('#id_clear_data1_res').text('Clear');
-    $('#id_clear_data1_res').css({ 'margin-top': '' });
+    $('#login').text('Sing in');
     $('.under2_menu').css({ 'display': 'none' });
     $("#submenu").css({ 'display': 'none' });
 }
@@ -401,6 +403,7 @@ $('#nav_saves').on('click', function(event) {
 
 $('#submenu_toggle').on('click', function() {
     open_submenu();
+    $('.under2_menu').hide();
 })
 
 /**/

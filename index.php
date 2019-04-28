@@ -8,8 +8,6 @@ include ('includes/DB_connection.php');
 <head>
 <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-    <script src="lib/jQuery/jquery-3.3.1.js" type="text/javascript">
-    </script>
     <link href="style/style.css" rel="stylesheet" type="text/css">
     <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
     <title>CMeal</title>
@@ -137,6 +135,8 @@ include('includes/navbar.php');
             </table>
         </div>
         </div>
+        <script src="lib/jQuery/jquery-3.3.1.js" type="text/javascript">
+    </script>
     <script src="script/script.js" type="text/javascript">
     </script>
 </body>
