@@ -41,8 +41,8 @@
             </div>
         </nav>
 </header>
-
-<form id="first-row">
+<form id="first-row" align="center">
+<div id="sign_block" align="center">
   <div class="form-group">
     <label for="exampleInputEmail1">Логин</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите логин">
@@ -52,8 +52,8 @@
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Пароль">
   </div>
   <button type="submit" class="btn btn-outline-success" id="enter">Войти</button>
+</div>
 </form>
-
 <script type="text/javascript" src="script/script.js"></script>
 </body>
 </html>

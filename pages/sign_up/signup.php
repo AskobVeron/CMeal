@@ -43,6 +43,7 @@
 </header>
 
 <form id="first-row">
+    <div id="sign_block" align="center">
   <div class="form-group">
     <label for="exampleInputEmail1">Логин</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите логин">
@@ -53,6 +54,7 @@
     <input type="password" class="form-control password" placeholder="Введите пароль еще раз">
   </div>
   <button type="submit" id="regestration" class="btn btn-outline-primary">Зарегестрироваться</button>
+</div>
 </form>
 
 <script type="text/javascript" src="script/script.js"></script>

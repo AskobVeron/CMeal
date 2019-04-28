@@ -33,16 +33,17 @@
 	font-size: 12px;
 }
 #first-row{
-	margin-top: 40%;
-	margin-left: 40px;
-	margin-right: 60px;
+    overflow: auto;
+	margin-top: 200px;
+	margin-left: 20%;
+	margin-right: 20%;
 }
 #enter{
 	font-size: 20px;
 }
-#sign_up{
-	margin-top: 0.8%;
-	margin-left: auto;
-	margin-bottom: auto;
-	height: auto;
+#sign_block{
+	border: 1px solid #818181;
+	width: auto;
+	text-align: center;
+	padding: 5%;
 }
