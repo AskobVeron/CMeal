@@ -37,7 +37,7 @@
                         </ul>
                     </div>
                 </div>
-                <a id="sign_up" href="../sign_up">Регестрация</a>
+                <a id="sign_up" href="../sign_up">Зарегистрироваться</a>
             </div>
         </nav>
 </header>

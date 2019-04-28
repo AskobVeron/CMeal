@@ -3487,13 +3487,13 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 		display: none
 	}
 }
-@media (max-width:1919.98px) {
+@media (max-width:1920.98px) {
 	.navbar-expand-lg>.container, .navbar-expand-lg>.container-fluid {
 		padding-right: 0;
 		padding-left: 0
 	}
 }
-@media (min-width:1919.98px) {
+@media (min-width:1920.98px) {
 	.navbar-expand-lg {
 		-ms-flex-flow: row nowrap;
 		flex-flow: row nowrap;
