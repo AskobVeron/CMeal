@@ -3,7 +3,7 @@ function russian() {
     $('#login').text('Войти');
     $('label:eq(0)').text('Логин');
     $('#exampleInputEmail1').attr('placeholder', 'Введите логин');
-    $('label:eq(1)').text('Пароль');
+    $('label:eq(2)').text('Пароль');
     $('.password:eq(0)').attr('placeholder', 'Пароль');
     $('.password:eq(1)').attr('placeholder', 'Введите пароль еще раз');
     $('#regestration').text('Зарегистрироваться');
@@ -17,9 +17,9 @@ function russian() {
 function english() {
     $('#Home').text('At Home');
     $('#login').text('Sign In');
-    $('label:eq(0)').text('Login');
+    $('label:eq(0)').text('login');
     $('#exampleInputEmail1').attr('placeholder', 'Login');
-    $('label:eq(1)').text('Password');
+    $('label:eq(2)').text('Password');
     $('.password:eq(0)').attr('placeholder', 'Password');
     $('.password:eq(1)').attr('placeholder', 'Enter password again');
     $('#regestration').text('Sign Up');
@@ -75,3 +75,5 @@ $('#English').on('click', function(event) {
     english();
     open_languages();
 })
+
+/**/

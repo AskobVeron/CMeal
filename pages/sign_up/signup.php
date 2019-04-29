@@ -1,6 +1,3 @@
-<?php 
-	require_once('../../includes/DB_connection.php');
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,16 +39,18 @@
         </nav>
 </header>
 
-<form id="first-row">
+<form id="first-row" action="../../includes/add_user.php" method="POST">
     <div id="sign_block" align="center">
   <div class="form-group">
     <label for="exampleInputEmail1">Логин</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите логин">
+    <input type="text" name="login" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Логин">
+        <label id="exampleInputEmail2" for="exampleInputEmail1">E-mail</label>
+    <input type="text" name="email" class="form-control" aria-describedby="emailHelp" placeholder="E-mail">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Пароль</label>
-    <input id="password" type="password" class="form-control password" placeholder="Пароль">
-    <input type="password" class="form-control password" placeholder="Введите пароль еще раз">
+    <input id="password" name="password" type="password" class="form-control password" placeholder="Пароль">
+    <input type="password" name="password2" class="form-control password" placeholder="Введите пароль еще раз">
   </div>
   <button type="submit" id="regestration" class="btn btn-outline-primary">Зарегестрироваться</button>
 </div>

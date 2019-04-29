@@ -1,6 +1,3 @@
-<?php 
-	require_once('../../includes/DB_connection.php');
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,15 +38,15 @@
             </div>
         </nav>
 </header>
-<form id="first-row" align="center">
+<form id="first-row" align="center" action="../../includes/verify_user.php" method="POST">
 <div id="sign_block" align="center">
   <div class="form-group">
     <label for="exampleInputEmail1">Логин</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите логин">
+    <input type="text" name="User" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Логин">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Пароль</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Пароль">
+    <input type="password" name="log_password" class="form-control" id="exampleInputPassword1" placeholder="Пароль">
   </div>
   <button type="submit" class="btn btn-outline-success" id="enter">Войти</button>
 </div>

@@ -15,8 +15,8 @@ function russian() {
 function english() {
     $('#Home').text('At Home');
     $('#sign_up').text('Sign Up');
-    $('label:eq(0)').text('Login');
-    $('#exampleInputEmail1').attr('placeholder', 'Login');
+    $('label:eq(0)').text('login');
+    $('#exampleInputEmail1').attr('placeholder', 'login');
     $('label:eq(1)').text('Password');
     $('#exampleInputPassword1').attr('placeholder', 'Password');
     $('#enter').text('Sign In');
@@ -72,3 +72,6 @@ $('#English').on('click', function(event) {
     english();
     open_languages();
 })
+
+/**/
+
