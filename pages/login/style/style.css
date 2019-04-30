@@ -43,11 +43,12 @@
 }
 #sign_block{
 	border: 1px solid #818181;
+	border-radius: 12%;
 	width: auto;
 	text-align: center;
 	padding: 5%;
 }
-#sign_up{
+#acc_tab{
 	margin-top: 0.5%;
 	margin-left: auto;
 	margin-bottom: auto;

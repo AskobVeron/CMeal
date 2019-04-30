@@ -55,7 +55,7 @@ $('#submenu ul li:eq(1)').on('click', function(event) {
 
 /**/
 
-$('#languages_list').on('click', function(event){
+$('#languages_list').on('click', function(event) {
     event.preventDefault();
     open_languages();
 })

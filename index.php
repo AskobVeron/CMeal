@@ -1,7 +1,3 @@
-<?php 
-require_once ('includes/config.php');
-include ('includes/DB_connection.php');
- ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,9 +11,54 @@ include ('includes/DB_connection.php');
 
 <body>
     <header>
-<?php 
-include('includes/navbar.php');
- ?>
+<nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-dark menu">
+            <div class="container-fluid">
+                <div id="triple-top">
+                    <button class="navbar-toggler" id="submenu_toggle" type="button"><span class="navbar-toggler-icon"></span></button>
+                    <a class="a_nav_tab brand" href="#" id="nav_crmeal">CMeal</a>
+                    <?php 
+                    if (isset($_COOKIE['login'])) {
+                        echo '<a class="a_nav_tab" href="#" id="nav_saves">Сохранения</a>';
+                    }
+                     ?> 
+                    <div id="submenu">
+                        <ul>
+                            <li class="navbarli">
+                                <a id="nav_versions" class="under_menu" target="blank" href="#">Версии</a>
+                            </li>
+                            <li class="navbarli">
+                                <a class="under_menu" href="#" id="languages_list">Выбрать язык</a>
+                            </li>
+                            <li style="list-style: none; display: inline">
+                                <ul>
+                                    <li class="navbarli">
+                                        <a class="under2_menu" href="#" id="English">Английский</a>
+                                    </li>
+                                    <li class="navbarli">
+                                        <a class="under2_menu" href="#" id="Russian">Русский</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <form class="acc_tab" action="pages/login/exit.php" method="POST">
+                <?php 
+                if (isset($_COOKIE['login'])) {
+                    echo '
+                    <a href="#" style="
+                        margin-right: 10px;
+                    " id="username" class="brand acc_tab">' 
+                    . $_COOKIE['login'] .
+                    '</a>
+                        <a href="pages/login/exit.php" id="username" class=" acc_tab">Выход</a>';
+                } else {
+                    echo '<a class="acc_tab" href="pages/login/">Войти</a>';
+                }
+                 ?>
+             </form>
+            </div>
+        </nav>
     </header>
     <br>
     <div id="saves">
@@ -31,12 +72,13 @@ include('includes/navbar.php');
          ?>
     </div>
     <div id="body">
-            <form action="includes/save_data1.php" method="POST">
+            <!-- <form action="includes/save_data1.php" method="POST"> -->
+            <form action="" method="POST">
         <table class="table">
             <thead>
                 <tr>
                     <th class="dish_name_trsl" id="name_dish_data1">Продукт</th>
-                    <th colspan="2"><input id="dish_data1" name="dish_data1" type="text">
+                    <th colspan="2"><input class="" id="dish_data1" name="dish_data1" type="text">
                     </th>
                 </tr>
             </thead>
@@ -75,16 +117,22 @@ include('includes/navbar.php');
                 </td>
             </tr>
         </table>
-        <button class="btn btn-outline-primary data1_buttons" id="id_save_data1" type="submit" name="save_data1" value="Сохранить ↑↑">Сохранить ↑↑</button>
-        </form>
-        <button class="btn btn-outline-success data1_buttons" id="id_add_ingridient">Добавить</button>
-        <button class="btn btn-outline-dark data1_buttons" id="id_clear_data1_res">
+        <button class="btn btn-outline-primary data1_buttons" 
+        id="id_save_data1" type="submit" name="save_data1" 
+        value="Сохранить ↑↑">Сохранить ↑↑</button>
+        <button class="btn btn-outline-dark data1_buttons" 
+        id="id_clear_data1_res">
         Очистить</button>
+        </form>
+        <button class="btn btn-outline-success data1_buttons" 
+        id="id_add_ingridient">Добавить</button>
+        <?php
+            include 'includes/save_data1.php';
+        ?>
         <hr>
         <button class="btn btn-outline-dark data2_buttons" id="del_last_data2_res">Отменить</button>
         <button class="btn btn-outline-danger data2_buttons" id="clear_all_data2">
         Очистить всё</button>
-        <button class="btn btn-outline-primary data2_buttons" id="id_save_data2" type="submit">Сохранить ↓↓</button>
         <div class="table-responsive">
             <table class="table" id="data2">
                 <thead class="thead-dark">

@@ -1,3 +1,52 @@
+<?php 
+require '../../includes/DB_connection.php';
+if (!isset($_COOKIE['login'])) {
+    if (isset($_POST['submit'])) {
+
+        $login = mysqli_real_escape_string(
+            $connection,
+             trim($_POST['User']));
+        $password  = mysqli_real_escape_string(
+            $connection,
+             trim($_POST['log_password']));
+
+        $errors = array();
+
+        if (empty($_POST['User'])) {
+            $errors[] = 'Введите логин';
+        }
+        if (empty($_POST['log_password'])) {
+            $errors[] = 'Введите пароль';
+        }
+
+        $check_matches_query = "SELECT `id`, `login` FROM `users` 
+            WHERE login = '$login' AND password  = '$password'";
+        $check_matches = mysqli_query($connection, $check_matches_query);
+
+        if (mysqli_num_rows($check_matches) == 0) {
+            $errors[] = 'Неправильно введен логин или пароль';
+        }
+
+ else {
+
+            //Авторизуем
+
+            $info = mysqli_fetch_assoc($check_matches);
+
+            setcookie("login", $info['login'], time()+86400, '/');
+            setcookie("id", $info['id'], time()+86400, '/');
+
+            $home_url = 'http://' . $_SERVER['HTTP_HOST'];
+            header('location: ' . $home_url);
+
+
+        }
+    }
+
+}
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,21 +83,40 @@
                         </ul>
                     </div>
                 </div>
-                <a id="sign_up" href="../sign_up">Зарегистрироваться</a>
+                <a id="acc_tab" href="../sign_up">Зарегистрироваться</a>
             </div>
         </nav>
 </header>
-<form id="first-row" align="center" action="../../includes/verify_user.php" method="POST">
+<form id="first-row" align="center" action="../login/" method="POST">
 <div id="sign_block" align="center">
   <div class="form-group">
-    <label for="exampleInputEmail1">Логин</label>
-    <input type="text" name="User" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Логин">
+    <label>Логин</label>
+    <input value="<?php echo $_POST['User'] ?>" type="text" name="User" class="form-control" placeholder="Логин">
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Пароль</label>
-    <input type="password" name="log_password" class="form-control" id="exampleInputPassword1" placeholder="Пароль">
+    <label>Пароль</label>
+    <input type="password" name="log_password" class="form-control" placeholder="Пароль">
   </div>
-  <button type="submit" class="btn btn-outline-success" id="enter">Войти</button>
+  <button type="submit" name="submit" class="btn btn-outline-success" id="enter">Войти</button>
+</div>
+<div align="center">
+    <?php 
+
+        if (empty($errors) == false) {
+            echo '<div style="
+            margin-top: 10px;
+            ">
+            <p style="
+            font-size: 20px;
+            color: red;
+            padding: 2%
+            ">'
+            . array_shift($errors) .
+            '!</p>
+            </div>';
+        }
+?>
+    
 </div>
 </form>
 <script type="text/javascript" src="script/script.js"></script>

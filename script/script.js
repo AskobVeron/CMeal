@@ -152,12 +152,12 @@ function addIngridient() {
         proteins: $("#id_proteins_data1").val(),
         fats: $("#id_fats_data1").val(),
         carbs: $("#id_carbs_data1").val(),
-        weight: parseInt($("#id_weight_data1").val()),
+        weight: $("#id_weight_data1").val() / 100,
         ccal: $("#ccal_data1_res").val()
     };
-    var proteins = Math.round(dish.proteins * (dish.weight /100));
-    var fats = Math.round(dish.fats * (dish.weight /100));
-    var carbs = Math.round(dish.carbs * (dish.weight /100));
+    var proteins = Math.round(dish.proteins * dish.weight);
+    var fats = Math.round(dish.fats * dish.weight);
+    var carbs = Math.round(dish.carbs * dish.weight);
     var ccal = Math.round((proteins * 4) + (fats * 9) + (carbs * 4));
     $("#proteins_data1_res").val(proteins);
     $("#fats_data1_res").val(fats);
@@ -173,7 +173,7 @@ function addIngridient() {
         $("#fats_total_data2_res").val(fats + fats2),
         $("#carbs_total_data2_res").val(carbs + carbs2),
         $("#ccal_total_data2_res").val(ccal + ccal2),
-        $("#weight_total_data2_res").val(dish.weight + weight2)
+        $("#weight_total_data2_res").val((dish.weight * 100) + weight2)
     ];
     result_in100g();
     if (isNaN(
@@ -332,7 +332,8 @@ function Clear_all() {
 /**/
 
 $(document).ready(function() {
-    getStorage();                           
+    getStorage();
+    alert('Сохраняйте только то, что нужно. На данном этапе, вы не можете очищать свой список сохранений. Спасибо за понимание :)')                           
 })
 
 /**/
@@ -435,24 +436,9 @@ $('#English').on('click', function(event) {
 
 /**/
 
-    $('form').submit(function(event) {
-        event.preventDefault();
-        $.ajax({
-            type: $(this).attr('method'),
-            url: $(this).attr('action'),
-            data: new FormData(this),
-            contentType: false,
-            cache: false,
-            processData: false,
-            success: function(result) {
-                alert(result);
-            },
-            error: function (result) {
-                alert(result);
-            }
-        });
-    
-    });
+$('#username').on('click', function(event){
+    event.preventDefault();
+})
 
 /**/
 
