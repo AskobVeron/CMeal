@@ -4,69 +4,8 @@ var result_minus_tr = new Array(5);
 
 /**/
 
-function russian() {
-    $('#nav_saves').text('Сохранения');
-    $('#nav_versions').text('Версии');
-    $('#languages_list').text('Выбрать язык');
-    $('#English').text('Английский');
-    $('#Russian').text('Русский');
-    $('.prots_trsl').text('Белки');
-    $('.fats_trsl').text('Жиры');
-    $('.carbs_trsl').text('Углеводы');
-    $('.weight_trsl').text('Вес(г)');
-    $('.ccal_trsl').text('кКал');
-    $('.dish_name_trsl').text('Продукт');
-    $('#in100_trsl').text('В 100гр');
-    $('#result_trsl').text('Результат');
-    $('#id_save_data2').text('Сохранить ↓↓');
-    $('#id_save_data1').text('Сохранить ↑↑');
-    $('#id_add_ingridient').text('Добавить');
-    $('#del_last_data2_res').text('Отменить');
-    $('#clear_all_data2').text('Очистить всё');
-    $('#id_clear_data1_res').text('Очистить');
-    $('#login').text('Войти');
-    $('.under2_menu').css({ 'display': 'none' });
-    $("#submenu").css({ 'display': 'none' });
-
-}
-
-/**/
-
-function english() {
-    $('#nav_saves').text('Saves');
-    $('#nav_versions').text('Versions');
-    $('#languages_list').text('Select Language');
-    $('#English').text('English');
-    $('#Russian').text('Russian');
-    $('.prots_trsl').text('Proteins');
-    $('.fats_trsl').text('Fats');
-    $('.carbs_trsl').text('Carbs');
-    $('.weight_trsl').text('Weight(g)');
-    $('.ccal_trsl').text('kCal');
-    $('.dish_name_trsl').text('Dish\'s Name');
-    $('#in100_trsl').text('In 100g');
-    $('#result_trsl').text('Result');
-    $('#id_save_data2').text('Save ↓↓');
-    $('#id_save_data1').text('Save ↑↑');
-    $('#id_add_ingridient').text('Add Ingroidient');
-    $('#del_last_data2_res').text('Delete Last');
-    $('#clear_all_data2').text('Clear All');
-    $('#id_clear_data1_res').text('Clear');
-    $('#login').text('Sing in');
-    $('.under2_menu').css({ 'display': 'none' });
-    $("#submenu").css({ 'display': 'none' });
-}
-
-/**/
-
 function open_submenu() {
     $("#submenu").toggle();
-}
-
-/**/
-
-function open_languages() {
-    $('.under2_menu').toggle()
 }
 
 /**/
@@ -332,8 +271,7 @@ function Clear_all() {
 /**/
 
 $(document).ready(function() {
-    getStorage();
-    alert('Сохраняйте только то, что нужно. На данном этапе, вы не можете очищать свой список сохранений. Спасибо за понимание :)')                           
+    getStorage();                           
 })
 
 /**/
@@ -404,40 +342,12 @@ $('#nav_saves').on('click', function(event) {
 
 $('#submenu_toggle').on('click', function() {
     open_submenu();
-    $('.under2_menu').hide();
-})
-
-/**/
-
-$('#submenu ul li:eq(1)').on('click', function(event) {
-    event.preventDefault();
-    open_languages();
-})
-
-/**/
-
-$('#Russian').on('click', function(event) {
-    event.preventDefault();
-    russian();
 })
 
 /**/
 
 $('#nav_versions').on('click', function() {
     $("#submenu").hide();
-})
-
-/**/
-
-$('#English').on('click', function(event) {
-    event.preventDefault();
-    english();
-})
-
-/**/
-
-$('#username').on('click', function(event){
-    event.preventDefault();
 })
 
 /**/

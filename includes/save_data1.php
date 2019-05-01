@@ -14,9 +14,9 @@ if ( isset($_POST['save_data1']) ) {
     $errors[] = 'Введите Название';
   }
   if ( empty($_POST['weight_data1'])) {
-    $errors[] = 'Введите вес';
+    $_POST['weight_data1'] = 100;
   }
-  if (strlen($_POST['dish_data1']) > 50) {
+  if (strlen($_POST['dish_data1']) > 100) {
     $errors[] = 'Слишком длинное название';
     }
 

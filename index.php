@@ -14,8 +14,19 @@
 <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-dark menu">
             <div class="container-fluid">
                 <div id="triple-top">
-                    <button class="navbar-toggler" id="submenu_toggle" type="button"><span class="navbar-toggler-icon"></span></button>
-                    <a class="a_nav_tab brand" href="#" id="nav_crmeal">CMeal</a>
+                    <button class="navbar-toggler" id="submenu_toggle" type="button"><span class="navbar-toggler-icon"></span></button><?php 
+                        if (isset($_COOKIE['login'])) {
+                    echo '
+                    <a href="#" style="
+                        margin-right: 5px;
+                        margin-left: 5px;
+                    " id="nav_crmeal" class="brand acc_tab">' 
+                    . $_COOKIE['login'] .
+                    '</a>';
+                } else {
+                    echo '<a class="a_nav_tab brand" href="#" id="nav_crmeal">CMeal</a>';
+                }
+                     ?>
                     <?php 
                     if (isset($_COOKIE['login'])) {
                         echo '<a class="a_nav_tab" href="#" id="nav_saves">Сохранения</a>';
@@ -27,35 +38,18 @@
                                 <a id="nav_versions" class="under_menu" target="blank" href="#">Версии</a>
                             </li>
                             <li class="navbarli">
-                                <a class="under_menu" href="#" id="languages_list">Выбрать язык</a>
-                            </li>
-                            <li style="list-style: none; display: inline">
-                                <ul>
-                                    <li class="navbarli">
-                                        <a class="under2_menu" href="#" id="English">Английский</a>
-                                    </li>
-                                    <li class="navbarli">
-                                        <a class="under2_menu" href="#" id="Russian">Русский</a>
-                                    </li>
-                                </ul>
+                    <?php 
+                if (isset($_COOKIE['login'])) {
+                    echo '<a href="pages/login/exit.php" id="username" class="navbarli">Выход</a>';
+                } else {
+                    echo '<a class="acc_tab" href="pages/login/">Войти</a>';
+                }
+                 ?>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <form class="acc_tab" action="pages/login/exit.php" method="POST">
-                <?php 
-                if (isset($_COOKIE['login'])) {
-                    echo '
-                    <a href="#" style="
-                        margin-right: 10px;
-                    " id="username" class="brand acc_tab">' 
-                    . $_COOKIE['login'] .
-                    '</a>
-                        <a href="pages/login/exit.php" id="username" class=" acc_tab">Выход</a>';
-                } else {
-                    echo '<a class="acc_tab" href="pages/login/">Войти</a>';
-                }
-                 ?>
              </form>
             </div>
         </nav>

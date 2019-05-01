@@ -1,7 +1,7 @@
 <?php 
-include ('includes/DB_connection.php');
+require 'includes/DB_connection.php';
 
-$query = "SELECT * FROM $db_connection[database_name] 
+$query = "SELECT * FROM `dishes` 
 WHERE User = '$_COOKIE[login]'";
  
 $result = mysqli_query($connection, $query); 

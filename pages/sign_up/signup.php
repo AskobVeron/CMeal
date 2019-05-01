@@ -19,22 +19,11 @@
                     <div id="submenu">
                         <ul>
                             <li class="navbarli">
-                                <a class="under_menu" href="#" id="languages_list">Выбрать язык</a>
-                            </li>
-                            <li class="navbarli">
-                                <ul>
-                                    <li class="navbarli">
-                                        <a class="under2_menu" href="#" id="English">Английский</a>
-                                    </li>
-                                    <li class="navbarli">
-                                        <a class="under2_menu" href="#" id="Russian">Русский</a>
-                                    </li>
-                                </ul>
+                                <a id="login" href="../login">Войти</a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <a id="login" href="../login">Войти</a>
             </div>
         </nav>
 </header>
@@ -47,7 +36,7 @@
     <input type="text" name="login" class="form-control" placeholder="Логин" value="<?php echo $_POST['login'] ?>">
 
     <label id="exampleInputEmail2">E-mail</label>
-    <input type="text" name="email" class="form-control" 
+    <input type="email" name="email" class="form-control" 
     placeholder="E-mail" value="<?php echo $_POST['email'] ?>">
 
   </div>
@@ -76,7 +65,7 @@ $errors = array();
     $errors[] = 'Введите Логин';
     }
 
-    if (strlen($_POST['login']) > 30) {
+    if (strlen($_POST['login']) > 12) {
     $errors[] = 'Логин слишком длинный';
     }
 

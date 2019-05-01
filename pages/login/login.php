@@ -50,7 +50,7 @@ if (!isset($_COOKIE['login'])) {
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <script src="../../lib/jQuery/jquery-3.3.1.js" type="text/javascript">
     </script>
@@ -68,22 +68,11 @@ if (!isset($_COOKIE['login'])) {
                     <div id="submenu">
                         <ul>
                             <li class="navbarli">
-                                <a class="under_menu" href="#" id="languages_list">Выбрать язык</a>
-                            </li>
-                            <li class="navbarli">
-                                <ul>
-                                    <li class="navbarli">
-                                        <a class="under2_menu" href="#" id="English">Английский</a>
-                                    </li>
-                                    <li class="navbarli">
-                                        <a class="under2_menu" href="#" id="Russian">Русский</a>
-                                    </li>
-                                </ul>
+                                <a id="acc_tab" href="../sign_up">Зарегистрироваться</a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <a id="acc_tab" href="../sign_up">Зарегистрироваться</a>
             </div>
         </nav>
 </header>

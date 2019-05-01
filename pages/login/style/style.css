@@ -34,23 +34,18 @@
 }
 #first-row{
     overflow: auto;
-	margin-top: 200px;
-	margin-left: 20%;
-	margin-right: 20%;
+	margin-top: 150px;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 #enter{
 	font-size: 20px;
 }
 #sign_block{
 	border: 1px solid #818181;
-	border-radius: 12%;
-	width: auto;
+	border-radius: 10%;
+	width: 100%;
 	text-align: center;
-	padding: 5%;
+	padding: 7%;
 }
-#acc_tab{
-	margin-top: 0.5%;
-	margin-left: auto;
-	margin-bottom: auto;
-	height: auto;
-}
+
