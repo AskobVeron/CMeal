@@ -12,6 +12,7 @@
 }
 .navbar {
 	margin-left: -10px;
+	border-bottom: 1px solid #ECE3E3;
 }
 .brand{
 	font-size: 20px;
@@ -21,7 +22,8 @@
 }
 #submenu{
 	display: none;
-	margin-top: 8px;
+	margin-top: 5px;
+	margin-left: -20%;
 }
 .under2_menu{
 	display: none;
@@ -50,12 +52,12 @@
 	width: auto;
 	text-align: center;
 	padding: 5%;
+	margin-bottom: 10px;
 }
-#login{
-	margin-top: 0.5%;
-	margin-left: auto;
-	margin-bottom: auto;
-	height: auto;
+#login {
+color: #706F6F;
+font-size: 18px;
+margin-left: 5px;
 }
 #exampleInputEmail2{
 	margin-top: 10px;

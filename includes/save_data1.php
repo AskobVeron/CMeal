@@ -7,7 +7,7 @@ if ( isset($_POST['save_data1']) ) {
 
   $errors = array();
 
-  if ( !isset($_COOKIE['login'])) {
+  if ( !isset($_COOKIE['token'])) {
     $errors[] = 'Авторизуйтесь';
   }
   if ( empty($_POST['dish_data1'])) {
@@ -20,12 +20,19 @@ if ( isset($_POST['save_data1']) ) {
     $errors[] = 'Слишком длинное название';
     }
 
-  $check_dish_query = "
-  SELECT * FROM `dishes` WHERE Dish = '$_POST[dish_data1]'
-  AND User = '$_COOKIE[login]' AND Weight = '$_POST[weight_data1]' ";
-  $check_dish = mysqli_query($connection, $check_dish_query);
+$find_token = " SELECT * FROM `users` 
+WHERE token = '$_COOKIE[token]' ";
 
-  if (mysqli_num_rows($check_dish) != 0) {
+$find_token_query = mysqli_query($connection, $find_token);
+$result_token = mysqli_fetch_assoc($find_token_query);
+
+
+  $check_dish = "
+  SELECT * FROM `dishes` WHERE Dish = '$_POST[dish_data1]'
+  AND User = '$result_token[login]' AND Weight = '$_POST[weight_data1]' ";
+  $check_dish_query = mysqli_query($connection, $check_dish);
+
+  if (mysqli_num_rows($check_dish_query) != 0) {
         $errors[] = 'Похоже, такая запись уже существует';
     }
 
@@ -55,18 +62,23 @@ if ( isset($_POST['save_data1']) ) {
 	        </div>';
 
 	        // Добавляем
-	        $Weight = $_POST['weight_data1'];
-	        $factor = $Weight / 100;
-	        $User = $_COOKIE['login'];
-	        $Dish = $_POST['dish_data1'];
-	        $Prots = $_POST['prots_data1']*$factor;
-	        $Fats = $_POST['fats_data1']*$factor;
-	        $Carbs = $_POST['carbs_data1']*$factor;
-	        $kCal = ($Prots*4 )+($Fats*9)+($Carbs*4);
 
-	         $insert_dish_query = "INSERT INTO `dishes` (User, Dish, Prots, Fats, Carbs, Weight, kCal) 
+$find_token = " SELECT * FROM `users` 
+WHERE token = '$_COOKIE[token]' ";
+
+$find_token_query = mysqli_query($connection, $find_token);
+$result_token = mysqli_fetch_assoc($find_token_query);
+
+          $User = $result_token['login'];
+          $Dish = $_POST['dish_data1'];
+          $Prots = $_POST['prots_data1'];
+          $Fats = $_POST['fats_data1'];
+          $Carbs = $_POST['carbs_data1'];
+	        $Weight = $_POST['weight_data1'];
+
+	         $insert_dish_query = "INSERT INTO `dishes` (User, Dish, Prots, Fats, Carbs, Weight) 
 	         VALUES ('$User', '$Dish', '$Prots',
-	          '$Fats', '$Carbs', '$Weight', '$kCal')";
+	          '$Fats', '$Carbs', '$Weight')";
 
        mysqli_query($connection, $insert_dish_query);
 

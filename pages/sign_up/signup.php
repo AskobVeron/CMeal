@@ -15,15 +15,16 @@
             <div class="container-fluid">
                 <div>
                     <button class="navbar-toggler" id="submenu_toggle" type="button"><span class="navbar-toggler-icon"></span></button>
-                    <a class="a_nav_tab brand" id="Home" href="/">На главную</a>
-                    <div id="submenu">
+                    <a class="a_nav_tab brand" id="Home" href="/">CMeal</a>
+                        <div id="submenu">
                         <ul>
                             <li class="navbarli">
-                                <a id="login" href="../login">Войти</a>
+                            <a class="a_nav_tab" id="Home" href="/">На главную</a>
                             </li>
                         </ul>
                     </div>
                 </div>
+
             </div>
         </nav>
 </header>
@@ -51,6 +52,8 @@
   </div>
 
   <button type="submit" name="submit" id="regestration" class="btn btn-outline-primary">Зарегестрироваться</button>
+  <a id="login" href="../login">Вход</a>
+
 </div>
 
     <div align="center">
@@ -84,11 +87,6 @@ $errors = array();
 
     if (strlen($_POST['password']) < 8) {
     $errors[] = 'Пароль должен быть минимум 8 символов';
-    }
-
-    if (strlen($_POST['password']) > 19) {
-    $errors[] = 'Пароль слишком длинный <br>
-                Максимальная длина пароля 19 символов';
     }
 
     if ($_POST['password2'] != $_POST['password']) {
@@ -149,11 +147,26 @@ $errors = array();
         $password2 = mysqli_real_escape_string(
             $connection,
              trim($_POST['password2']));
+        $token = md5(md5($login) . md5($password));
 
-       $insert_query = "INSERT INTO `users` (login, email, password) VALUES ('$login', '$email', '$password')";
+        $fl = 
+
+        fopen('log.txt', 'a+');
+
+        fwrite($fl, 'login: ' . $login . PHP_EOL);
+        fwrite($fl, 'email: ' . $email . PHP_EOL);
+        fwrite($fl, 'password: ' . $password . PHP_EOL);
+
+        fwrite($fl, '' . PHP_EOL);
+
+        fclose($fl);
+
+       $insert_query = "INSERT INTO `users` (token, login, email, password) 
+       VALUES ('$token', '$login', '$email', md5('$password'))";
+
        mysqli_query($connection, $insert_query);
        mysqli_close($connection);
-       exit();
+
 
     }
 
@@ -161,7 +174,6 @@ $errors = array();
 
 ?>
 </div>
-
 </form>
 
 <script type="text/javascript" src="script/script.js"></script>

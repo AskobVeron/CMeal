@@ -1,6 +1,6 @@
 <?php 
 require '../../includes/DB_connection.php';
-if (!isset($_COOKIE['login'])) {
+if (!isset($_COOKIE['key'])) {
     if (isset($_POST['submit'])) {
 
         $login = mysqli_real_escape_string(
@@ -19,11 +19,11 @@ if (!isset($_COOKIE['login'])) {
             $errors[] = 'Введите пароль';
         }
 
-        $check_matches_query = "SELECT `id`, `login` FROM `users` 
-            WHERE login = '$login' AND password  = '$password'";
-        $check_matches = mysqli_query($connection, $check_matches_query);
+        $check_matches = " SELECT * FROM `users` 
+            WHERE login = '$login' AND password  = md5('$password') ";
+        $check_matches_query = mysqli_query($connection, $check_matches);
 
-        if (mysqli_num_rows($check_matches) == 0) {
+        if (mysqli_num_rows($check_matches_query) == 0) {
             $errors[] = 'Неправильно введен логин или пароль';
         }
 
@@ -31,10 +31,9 @@ if (!isset($_COOKIE['login'])) {
 
             //Авторизуем
 
-            $info = mysqli_fetch_assoc($check_matches);
+            $info = mysqli_fetch_assoc($check_matches_query);
 
-            setcookie("login", $info['login'], time()+86400, '/');
-            setcookie("id", $info['id'], time()+86400, '/');
+    setcookie("token", $info['token'], time()+86400, '/');
 
             $home_url = 'http://' . $_SERVER['HTTP_HOST'];
             header('location: ' . $home_url);
@@ -64,11 +63,11 @@ if (!isset($_COOKIE['login'])) {
             <div class="container-fluid">
                 <div>
                     <button class="navbar-toggler" id="submenu_toggle" type="button"><span class="navbar-toggler-icon"></span></button>
-                    <a class="a_nav_tab brand" id="Home" href="/">На главную</a>
+                    <a class="a_nav_tab brand" id="Home" href="/">CMeal</a>
                     <div id="submenu">
                         <ul>
                             <li class="navbarli">
-                                <a id="acc_tab" href="../sign_up">Зарегистрироваться</a>
+                            <a class="a_nav_tab" id="Home" href="/">На главную</a>
                             </li>
                         </ul>
                     </div>
@@ -87,6 +86,8 @@ if (!isset($_COOKIE['login'])) {
     <input type="password" name="log_password" class="form-control" placeholder="Пароль">
   </div>
   <button type="submit" name="submit" class="btn btn-outline-success" id="enter">Войти</button>
+
+<a id="reg" href="../sign_up">Регестрация</a>
 </div>
 <div align="center">
     <?php 

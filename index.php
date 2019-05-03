@@ -14,44 +14,50 @@
 <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-dark menu">
             <div class="container-fluid">
                 <div id="triple-top">
-                    <button class="navbar-toggler" id="submenu_toggle" type="button"><span class="navbar-toggler-icon"></span></button><?php 
-                        if (isset($_COOKIE['login'])) {
-                    echo '
-                    <a href="#" style="
-                        margin-right: 5px;
-                        margin-left: 5px;
-                    " id="nav_crmeal" class="brand acc_tab">' 
-                    . $_COOKIE['login'] .
-                    '</a>';
-                } else {
-                    echo '<a class="a_nav_tab brand" href="#" id="nav_crmeal">CMeal</a>';
-                }
-                     ?>
-                    <?php 
-                    if (isset($_COOKIE['login'])) {
-                        echo '<a class="a_nav_tab" href="#" id="nav_saves">Сохранения</a>';
-                    }
-                     ?> 
-                    <div id="submenu">
+                    <button class="navbar-toggler" id="submenu_toggle" type="button"><span class="navbar-toggler-icon"></span></button>
+                    <?php
+                    include 'includes/DB_connection.php';
+                                        $check_user = "SELECT * FROM `users`
+                                             WHERE `token` = '$_COOKIE[token]'";
+                                        $check_user_query = mysqli_query($connection, $check_user);
+                                        $row = mysqli_fetch_assoc($check_user_query);
+
+                                            if (isset($row['token'])) {
+                                        echo '
+                                        <a href="/" style="
+                                            margin-left: 10px;
+                                        " id="nav_crmeal" class="brand acc_tab">' 
+                                        . $row['login'] .
+                                        '</a>';
+                                        echo '<a style="
+                                            margin-left: 10px;
+                                            class="a_nav_tab" href="#" id="nav_saves">Сохранения</a>';
+                                    } else {
+                                        echo '<a class="a_nav_tab brand" href="#" id="nav_crmeal">CMeal</a>';
+                                    }
+                                         ?>
+                             <div id="submenu">
                         <ul>
                             <li class="navbarli">
-                                <a id="nav_versions" class="under_menu" target="blank" href="#">Версии</a>
-                            </li>
-                            <li class="navbarli">
-                    <?php 
-                if (isset($_COOKIE['login'])) {
-                    echo '<a href="pages/login/exit.php" id="username" class="navbarli">Выход</a>';
-                } else {
-                    echo '<a class="acc_tab" href="pages/login/">Войти</a>';
+                                <a id="nav_versions" style="font-size: 14.5px;" class="under_menu" target="blank" href="#">Версии</a>
+                                </li>
+                                <li class="navbarli">
+                                    <?php 
+                if (isset($_COOKIE['token'])) {
+                    echo '<a id="exit" href="pages/login/exit.php" class="">Выход</a>';
                 }
                  ?>
-                            </li>
+                                    </li>
                         </ul>
-                    </div>
-                </div>
-                <form class="acc_tab" action="pages/login/exit.php" method="POST">
-             </form>
-            </div>
+                                </div>
+                                     </div>
+                                         <?php 
+                                        if (!isset($_COOKIE['token'])) {
+                                            echo '<a class="acc_tab" href="pages/login/">Вход</a>';
+                                        }
+                                          ?>
+
+</div>
         </nav>
     </header>
     <br>
@@ -66,7 +72,6 @@
          ?>
     </div>
     <div id="body">
-            <!-- <form action="includes/save_data1.php" method="POST"> -->
             <form action="" method="POST">
         <table class="table">
             <thead>
