@@ -68,6 +68,10 @@ $errors = array();
     $errors[] = 'Введите Логин';
     }
 
+    if (preg_match('/^[а-я].*$/i', $_POST['login'])) {
+    $errors[] = 'Для логина используйте только латиницу';
+    }
+
     if (strlen($_POST['login']) > 12) {
     $errors[] = 'Логин слишком длинный';
     }
