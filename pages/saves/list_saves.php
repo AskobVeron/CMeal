@@ -19,7 +19,6 @@ if($result == true) {
   Что бы увидеть изменения, обновите страницу
 </div>';
 
-
     while ($column = mysqli_fetch_row($result)) {
 
         $Weight = $column[6];

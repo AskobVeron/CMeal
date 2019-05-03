@@ -10,6 +10,52 @@
 </head>
 
 <body>
+<?php 
+include 'includes/DB_connection.php';
+
+$hacker_check = "SELECT * FROM `users` 
+WHERE token = '$_COOKIE[token]'";
+
+$hacker_check_query = mysqli_query($connection, $hacker_check);
+
+$errors = array();
+
+if (mysqli_num_rows($hacker_check_query) == 0) {
+
+    $errors[] = ' Пошел вон, хакер грязный' ;    
+} 
+
+if (!isset($_COOKIE['token'])) {
+
+    $errors = array();    
+} 
+
+if (empty($errors) == false) {
+
+    echo '
+<style>
+body {
+background-image: url("img/Death.jpg");
+}
+</style>
+
+    <div align="center" style="
+    margin-top: 20%;
+    " 
+    class="alert alert-danger" 
+    role="alert">
+            <p style="
+            font-size: 60px;
+            color: red;
+            padding: 2%
+            ">'
+            . array_shift($errors) .
+            '!</p>
+            </div>';
+            exit();
+}
+
+ ?>
     <header>
 <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-dark menu">
             <div class="container-fluid">
