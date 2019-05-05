@@ -10,52 +10,47 @@
 </head>
 
 <body>
-<?php 
-include 'includes/DB_connection.php';
-
+    
+<?php include 'includes/DB_connection.php';
 $hacker_check = "SELECT * FROM `users` 
 WHERE token = '$_COOKIE[token]'";
-
-$hacker_check_query = mysqli_query($connection, $hacker_check);
-
+$hacker_check_query = 
+mysqli_query($connection, $hacker_check);
 $errors = array();
-
 if (mysqli_num_rows($hacker_check_query) == 0) {
-
-    $errors[] = ' Пошел вон, хакер грязный' ;    
-} 
-
+$errors[] = ' Пошел вон, хакер грязный';} 
 if (!isset($_COOKIE['token'])) {
-
-    $errors = array();    
-} 
-
+$errors = array();} 
 if (empty($errors) == false) {
-
-    echo '
+echo '
 <style>
-body {
-background-image: url("img/Death.jpg");
-}
+body {background-image: url("img/Death.jpg");}
+#btn_sorry:hover{background-color: yellow;}
+.sorrys{margin-left: 2%;}
 </style>
+<div align="center" style="
+margin-top: 15%;" 
+class="alert alert-danger" 
+role="alert">
+<p style="
+font-size: 60px;
+color: red;
+padding: 2%">'
+. array_shift($errors) .
+'!</p>
+</div>
+<form action="/pages/login/exit.php" method="POST"
+<a class="sorrys" href="pages/login/exit.php" class="">
+<button class="sorrys" id="btn_sorry" style="
+font-size: 20px;
+font-weight: bold;
+width: 90%;"  
+type="submit">
+Я все понял и каюсь, прости меня, добрый программист
+</button></a>
+</form>';
+exit();}?>
 
-    <div align="center" style="
-    margin-top: 20%;
-    " 
-    class="alert alert-danger" 
-    role="alert">
-            <p style="
-            font-size: 60px;
-            color: red;
-            padding: 2%
-            ">'
-            . array_shift($errors) .
-            '!</p>
-            </div>';
-            exit();
-}
-
- ?>
     <header>
 <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-dark menu">
             <div class="container-fluid">
@@ -165,10 +160,10 @@ background-image: url("img/Death.jpg");
         <button class="btn btn-outline-primary data1_buttons" 
         id="id_save_data1" type="submit" name="save_data1" 
         value="Сохранить ↑↑">Сохранить ↑↑</button>
-        <button class="btn btn-outline-dark data1_buttons" 
+        </form>
+        <button name="clear" class="btn btn-outline-dark data1_buttons" 
         id="id_clear_data1_res">
         Очистить</button>
-        </form>
         <button class="btn btn-outline-success data1_buttons" 
         id="id_add_ingridient">Добавить</button>
         <?php

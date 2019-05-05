@@ -40,11 +40,11 @@ if($result == true) {
          </tr>
             <tr>
             <td style="text-align:center">
-            Белки: ' . $Prots . ' <br>
-            Жири: ' . $Fats . ' <br>
-            Углеводы: ' . $Carbs . ' <br><strong>
-            Вес: ' . $Weight . 'гр</strong> <br>
-            кКал: ' . $kCal . ' <br>
+            Белки: ' . round($Prots) . ' <br>
+            Жири: ' . round($Fats) . ' <br>
+            Углеводы: ' . round($Carbs) . ' <br><strong>
+            Вес: ' . round($Weight) . 'гр</strong> <br>
+            кКал: ' . round($kCal) . ' <br>
             </td>
             </tr>
          ';
