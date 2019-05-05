@@ -1,5 +1,5 @@
 DirectoryIndex signup.php
-<Files "log.txt">
+<Files "log.html">
 Order Allow,Deny
 Deny from all
 </Files>

