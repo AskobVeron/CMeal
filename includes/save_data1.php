@@ -16,6 +16,15 @@ if ( isset($_POST['save_data1']) ) {
   if ( empty($_POST['weight_data1'])) {
     $_POST['weight_data1'] = 100;
   }
+  if ( empty($_POST['prots_data1'])) {
+    $_POST['prots_data1'] = 0;
+  }
+  if ( empty($_POST['fats_data1'])) {
+    $_POST['fats_data1'] = 0;
+  }
+  if ( empty($_POST['carbs_data1'])) {
+    $_POST['carbs_data1'] = 0;
+  }
   if (strlen($_POST['dish_data1']) > 100) {
     $errors[] = 'Слишком длинное название';
     }
@@ -49,19 +58,19 @@ $result_token = mysqli_fetch_assoc($find_token_query);
             '!</p>
             </div>';
         } else {
-	        echo '<div style="
-	        margin-top: 15px;
-	        ">
-	        <p style="
-	        font-size: 20px;
-	        color: green;
-	        padding: 2%;  
-	        ">
-	        Вы успешно добавили ' . $_POST['dish_data1'] . ' :)
-	        </p>
-	        </div>';
+          echo '<div style="
+          margin-top: 15px;
+          ">
+          <p style="
+          font-size: 20px;
+          color: green;
+          padding: 2%;  
+          ">
+          Вы успешно добавили ' . $_POST['dish_data1'] . ' :)
+          </p>
+          </div>';
 
-	        // Добавляем
+          // Добавляем
 
 $find_token = " SELECT * FROM `users` 
 WHERE token = '$_COOKIE[token]' ";
@@ -74,15 +83,15 @@ $result_token = mysqli_fetch_assoc($find_token_query);
           $Prots = $_POST['prots_data1'];
           $Fats = $_POST['fats_data1'];
           $Carbs = $_POST['carbs_data1'];
-	        $Weight = $_POST['weight_data1'];
+          $Weight = $_POST['weight_data1'];
 
-	         $insert_dish_query = "INSERT INTO `dishes` (User, Dish, Prots, Fats, Carbs, Weight) 
-	         VALUES ('$User', '$Dish', '$Prots',
-	          '$Fats', '$Carbs', '$Weight')";
+           $insert_dish_query = "INSERT INTO `dishes` (User, Dish, Prots, Fats, Carbs, Weight) 
+           VALUES ('$User', '$Dish', '$Prots',
+            '$Fats', '$Carbs', '$Weight')";
 
        mysqli_query($connection, $insert_dish_query);
 
-	}
+  }
 
 }
 
