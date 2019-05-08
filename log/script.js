@@ -11,5 +11,3 @@ $('#submenu_toggle').on('click', function() {
 })
 
 /**/
-
-

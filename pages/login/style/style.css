@@ -1,6 +1,9 @@
 .navbarli {
 	list-style-type: none;
 }
+.cbalink{
+display: none;
+}
 .navbar a{
 	color: white;
 	text-decoration: none;

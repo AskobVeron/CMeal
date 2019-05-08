@@ -5,6 +5,9 @@
 	color: white;
 	text-decoration: none;
 }
+.cbalink{
+display: none;
+}
 .navbar a:hover{
 	transition: 0.3s;
 	color: #AEAEAE;
