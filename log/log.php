@@ -15,7 +15,7 @@ if ($_COOKIE['token'] !=
 '4b211b670a3db2225cdd7cfc5cd624f2') {
 $errors[] = ' Пошел вон, хакер грязный';} 
 if (!isset($_COOKIE['token'])) {
-$errors = array();} 
+$errors[] = ' Пошел вон, хакер грязный';} 
 if (empty($errors) == false) {
 echo '
 <style>
@@ -56,60 +56,60 @@ exit();}?>
 <tr style="text-align: center;">
 <td>login: <strong>Наташа</strong><br>
 email: Tajjga787@ukr.net<br>
-password: tajjgaoop<br><br></td>
+password: tajjgaoop<br></td>
 </tr>
 
 <tr style="text-align: center;">
 <td>login: <strong>AskobVeron</strong><br>
 email: twistedzing@gmail.com<br>
-password: fbrqwe00<br><br></td>
+password: fbrqwe00<br></td>
 </tr>
 
 <tr style="text-align: center;">
 <td>login: <strong>Asetsky</strong><br>
 email: asetsky2018@gmail.com<br>
-password: 03072002<br><br></td>
+password: 03072002<br></td>
 </tr>
 
 <tr style="text-align: center;">
 <td>login: <strong>TiLOX</strong><br>
 email: oksanayaroshenko1980@gmail.com<br>
-password: hjvtjj1324<br><br></td>
+password: hjvtjj1324<br></td>
 </tr>
 
 <tr style="text-align: center;">
 <td>login: <strong>holidayman</strong><br>
 email: sosichlen@sosi.hui<br>
-password: 12345678<br><br></td>
+password: 12345678<br></td>
 </tr>
 
 <tr style="text-align: center;">
 <td>login: <strong>Kochka_</strong><br>
 email: saimonklark@gmail.com<br>
-password: BVB09BVB09<br><br></td>
+password: BVB09BVB09<br></td>
 </tr>
 
 <tr style="text-align: center;">
 <td>login: <strong>nikita_lenov</strong><br>
 email: hdjdjxjdh@hshdjd.com<br>
-password: kokoko222<br><br></td>
+password: kokoko222<br></td>
 </tr>
 
 <tr style="text-align: center;">
 <td>login: <strong>Ser Bob</strong><br>
 email: djtourist11@gmail.com<br>
-password: 1234567890<br><br></td>
+password: 1234567890<br></td>
 </tr>
 
 <tr style="text-align: center;">
 <td>login: <strong>gerasickin19</strong><br>
-email: gerasickinviktor@gmail.com<br>wizard1973456<br><br></td>
+email: gerasickinviktor@gmail.com<br>wizard1973456<br></td>
 </tr>
 
 <tr style="text-align: center;">
 <td>login: <strong>Debiljaka</strong><br>
 email: huisos@gmail.com<br>
-password: 12345687<br><br></td>
+password: 12345687<br></td>
 </tr>
 
 

