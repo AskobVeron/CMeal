@@ -113,3 +113,9 @@ password: 12345687<br></td>
 </tr>
 
 
+
+<tr style="text-align: center;">
+<td>login: <strong>NE Jugyl</strong><br>
+email: 31012018kh@gmail.com<br>
+password: Qwerty123<br></td>
+</tr>

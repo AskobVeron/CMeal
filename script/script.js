@@ -352,4 +352,37 @@ $('#nav_versions').on('click', function() {
 
 /**/
 
+$('#search').bind("change keyup input click", function() {
 
+        $.ajax({
+            type: 'POST',
+            url: "../list_saves.php",
+            data: {'search':this.value},
+            response: 'text',
+            success: function(data){
+                $("#response").html(data).fadeIn();
+           }
+       })
+
+})
+
+/**/
+
+$('table tr td a').on("click", function() {
+
+    if (confirm('Вы действительно хотите удалить эту запись?') == true) {
+
+       $.ajax({
+            type: 'POST',
+            url: "../list_saves.php",
+            data: {'delete':$(this).attr('class')},
+            success: function(data){
+                $("#response").html(data).fadeIn();
+           }
+       })
+
+       
+
+   }
+
+})

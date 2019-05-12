@@ -89,7 +89,7 @@ $result_token = mysqli_fetch_assoc($find_token_query);
            VALUES ('$User', '$Dish', '$Prots',
             '$Fats', '$Carbs', '$Weight')";
 
-       mysqli_query($connection, $insert_dish_query);
+       // mysqli_query($connection, $insert_dish_query);
 
   }
 

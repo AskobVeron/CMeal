@@ -6,6 +6,7 @@
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <link href="style/style.css" rel="stylesheet" type="text/css">
     <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>CMeal</title>
 </head>
 
@@ -84,10 +85,10 @@ exit();}?>
                                 </li>
                                 <li class="navbarli">
                                     <?php 
-                if (isset($_COOKIE['token'])) {
-                    echo '<a id="exit" href="pages/login/exit.php" class="">Выход</a>';
-                }
-                 ?>
+                                    if (isset($_COOKIE['token'])) {
+                                echo '<a id="exit" href="pages/login/exit.php" class="">Выход</a>';
+                                    }
+                                     ?>
                                     </li>
                         </ul>
                                 </div>
@@ -97,14 +98,16 @@ exit();}?>
                                             echo '<a class="acc_tab" href="pages/login/">Вход</a>';
                                         }
                                           ?>
-
 </div>
         </nav>
     </header>
     <br>
     <div id="saves">
+<div style="text-align:center" class="alert alert-primary" role="alert">
+Что бы увидеть изменения, обновите страницу</div>
+<input name="search" class="form-control_search" type="text" placeholder="Начните ввод..." id="search" aria-label="Search">
      <?php 
-     include('pages/saves/list_saves.php') 
+     include('list_saves.php');
      ?>        
     </div>
     <div id="versions">
@@ -119,6 +122,7 @@ exit();}?>
                 <tr>
                     <th class="dish_name_trsl" id="name_dish_data1">Продукт</th>
                     <th colspan="2"><input class="" id="dish_data1" name="dish_data1" type="text">
+                        <ul class="search_result"></ul>
                     </th>
                 </tr>
             </thead>

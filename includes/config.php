@@ -14,5 +14,4 @@ $db_connection = array(
 	'database_name' => 'dishes'
 );
 
-
 ?>
