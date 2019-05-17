@@ -66,7 +66,7 @@ $result_token = mysqli_fetch_assoc($find_token_query);
           color: green;
           padding: 2%;  
           ">
-          Вы успешно добавили ' . $_POST['dish_data1'] . ' :)
+          Приятного аппетита, когда будешь есть ' . $_POST['dish_data1'] . ' :)
           </p>
           </div>';
 
@@ -89,7 +89,7 @@ $result_token = mysqli_fetch_assoc($find_token_query);
            VALUES ('$User', '$Dish', '$Prots',
             '$Fats', '$Carbs', '$Weight')";
 
-       // mysqli_query($connection, $insert_dish_query);
+       mysqli_query($connection, $insert_dish_query);
 
   }
 

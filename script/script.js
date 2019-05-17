@@ -333,9 +333,11 @@ $('#nav_crmeal').on('click', function(event) {
 
 /**/
 
-$('#nav_saves').on('click', function(event) {
+$('#nav_saves').bind('click', function(event) {
     event.preventDefault();
     open_saves();
+
+ajax_save_list();
 })
 
 /**/
@@ -343,6 +345,20 @@ $('#nav_saves').on('click', function(event) {
 $('#submenu_toggle').on('click', function() {
     open_submenu();
 })
+
+/**/
+
+function ajax_save_list(){
+            $.ajax({
+            type: 'POST',
+            url: "../list_saves.php",
+            data: {'search':$('#search').val()},
+            response: 'text',
+            success: function(data){
+                $("#response").html(data).fadeIn();
+           }
+       })
+}
 
 /**/
 
@@ -354,35 +370,46 @@ $('#nav_versions').on('click', function() {
 
 $('#search').bind("change keyup input click", function() {
 
-        $.ajax({
-            type: 'POST',
-            url: "../list_saves.php",
-            data: {'search':this.value},
-            response: 'text',
-            success: function(data){
-                $("#response").html(data).fadeIn();
-           }
-       })
+     ajax_save_list();
 
 })
 
 /**/
 
-$('table tr td a').on("click", function() {
+function delete_quest() {
 
-    if (confirm('Вы действительно хотите удалить эту запись?') == true) {
+    var delete_name = $(this).siblings().text();
 
-       $.ajax({
-            type: 'POST',
-            url: "../list_saves.php",
-            data: {'delete':$(this).attr('class')},
-            success: function(data){
-                $("#response").html(data).fadeIn();
-           }
-       })
+    $('#black').css({'display':'block'});
+    $('html body').css({'overflow-y':'hidden'});
+    $('#confirm').css({ 'display': 'inline-block' });
 
-       
+    $('#no, #yes').on('click', function(){
+        $('#black').css({'display':'none'});
+        $('#confirm').css({ 'display': 'none' });
+        $('html body').css({'overflow-y':'visible'});
+    });
+
+    $('#yes').on('click', function(){
+        
+    });
 
    }
 
+// 
+
+$('.delete_btn').bind('click', function(){
+delete_quest();
+
 })
+
+$(document).mouseup(function (e){ 
+        var div = $("#confirm");
+        var black = $('#black'); 
+        if (!div.is(e.target) &&
+            div.has(e.target).length === 0) { 
+            div.hide();
+            black.hide();
+            $('html body').css({'overflow-y':'visible'});
+        }
+    });

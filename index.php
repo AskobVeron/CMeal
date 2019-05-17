@@ -4,6 +4,7 @@
 <head>
 <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta name="google-site-verification" content="U79wNeLag2vPIWpgdBv1OHEBSTlHkuKk5nM4SCXMTjI" />
     <link href="style/style.css" rel="stylesheet" type="text/css">
     <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -104,8 +105,15 @@ exit();}?>
     <br>
     <div id="saves">
 <div style="text-align:center" class="alert alert-primary" role="alert">
-Что бы увидеть изменения, обновите страницу</div>
+Здесь хранятся ваши сохраненные продукты </div>
 <input name="search" class="form-control_search" type="text" placeholder="Начните ввод..." id="search" aria-label="Search">
+     <div id="black"></div>
+     <div id="confirm">
+         <h4>Вы уверены, что хотите удалить этот продукт?</h4>
+         <hr>
+        <button class="btn btn-outline-danger confirm-btn" id="no">Отмена</button>
+        <button class="btn btn-outline-success confirm-btn" id="yes">Да</button>
+     </div>    
      <?php 
      include('list_saves.php');
      ?>        

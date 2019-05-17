@@ -8181,7 +8181,6 @@ a.text-dark:focus, a.text-dark:hover {
 .form-control_search {
 	display: inline-block;
 	width: 90%;
-	margin-bottom: 0;
 	height: calc(1.5em + .75rem + 2px);
 	padding: .375rem .75rem;
 	overflow-x: auto;

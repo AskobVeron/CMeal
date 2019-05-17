@@ -13,32 +13,29 @@ $find_dish = "SELECT * FROM `dishes`
 WHERE `User` = '$result_token[login]' ORDER BY `id` DESC ";
 
 $result = mysqli_query($connection, $find_dish);
-
+echo "<div style='margin-top: -30px;' id='response'>";
 }
 
 elseif (isset($_POST['search'])) {
 
  $search_query = trim(strip_tags(stripcslashes(
-    htmlspecialchars($_POST["search"])))
-);
+    htmlspecialchars($_POST["search"]))));
 
 $find_dish = "SELECT * FROM `dishes` 
-WHERE `User` = '$result_token[login]' 
-AND `Dish` LIKE '%$search_query%' ORDER BY `id` DESC ";
+WHERE `User` = '$result_token[login]'
+AND `Dish` LIKE '$search_query%' OR `Dish` 
+LIKE '%$search_query%' AND `User` = '$result_token[login]' 
+ORDER BY `id` DESC ";
 
 $result = mysqli_query($connection, $find_dish);
-echo "<div id='response>'";
 
-} else {
-
-    exit();
-
-}
+} else {exit();}
 
 ?>
 
 <?php
-echo "<div style='margin-top: -30px;' id='response'>";
+
+
 
     while ($column = mysqli_fetch_row($result)) {
 
@@ -55,14 +52,13 @@ echo "<div style='margin-top: -30px;' id='response'>";
 
     if ($Weight != 100) {
 
-            echo '<table class="table table-striped">
+           echo '<table class="table table-striped">
             <tr>
-            <td class="delete_name" style = "
-             text-align:center;
-             font-weight: 400;
-             ">
-             <span class="'. $Dish .'">'. $Dish .'</span>
-         <a name="delete"  class="'. $Dish .'" style=" color:#CC0C0C;
+            <td style = "text-align:center;
+            font-weight: 400;">
+             <span class="delete_name">'. $Dish .'</span>
+         <a name="delete" onclick="delete_quest()" class="delete_btn" style=" 
+         color:#CC0C0C;
          cursor: pointer;
          float: right;
          margin-right: 2%;
@@ -83,13 +79,15 @@ echo "<div style='margin-top: -30px;' id='response'>";
         }
     else    {
 
-         echo '<table class="table table-striped">
+          echo '<table class="table table-striped">
             <tr>
-            <td class="delete_name" style = "
+            <td style = "
              text-align:center;
              font-weight: 400;
-             "><span class="'. $Dish .'">'. $Dish . '</span>
-         <a name="delete"  class="'. $Dish .'" style=" color:#CC0C0C;
+             ">
+             <span class="delete_name">'. $Dish .'</span>
+         <a name="delete" onclick="delete_quest()" class="delete_btn" style=" 
+         color:#CC0C0C;
          cursor: pointer;
          float: right;
          margin-right: 2%;
@@ -111,16 +109,19 @@ echo "<div style='margin-top: -30px;' id='response'>";
         }
     }
 
-echo "</div>";
 
-if (isset($_POST['delete'])) {
+if (isset($_POST['delete_name'])) {
 
 $delete_dish = " DELETE FROM `dishes` 
-WHERE `User` = '$result_token[login]' AND `Dish` = '$_POST[delete]' ";
+WHERE `User` = '$result_token[login]' 
+AND `Dish` = '$_POST[delete_name]'
+AND `Weight` = '$_POST[delete_weight]' ";
 
 $delete_dish_query = mysqli_query($connection, $delete_dish);
 
 }
+
+echo "</div>";
 
 mysqli_close($connection);
 ?>
