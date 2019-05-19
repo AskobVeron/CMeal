@@ -2,13 +2,9 @@ var res100 = new Array(5);
 var idNumber = 1;
 var result_minus_tr = new Array(5);
 
-/**/
-
 function open_submenu() {
     $("#submenu").toggle();
 }
-
-/**/
 
 function open_versions() {
     $('#body').css({ 'display': 'none' });
@@ -20,8 +16,6 @@ function open_versions() {
     $('.under2_menu').css({ 'display': 'none' })
     $("#submenu").css({ 'display': 'none' });
 }
-
-/**/
 
 function open_crmeal() {
     $('#body').css({ 'display': 'block' });
@@ -35,8 +29,6 @@ function open_crmeal() {
     $("#submenu").css({ 'display': 'none' });
 }
 
-/**/
-
 function open_saves() {
     $('#body').css({ 'display': 'none' });
     $('#versions').css({ 'display': 'none' });
@@ -48,9 +40,6 @@ function open_saves() {
     $('.under2_menu').css({ 'display': 'none' })
     $("#submenu").css({ 'display': 'none' });
 }
-
-
-/**/
 
 function clear_data1_res() {
     proteins_data1_res.innerText = '';
@@ -64,8 +53,6 @@ function clear_data1_res() {
     $("#id_carbs_data1").val(null);
     $("#id_weight_data1").val(null);
 }
-
-/**/
 
 function result_in100g() {
     var factor = $("#weight_total_data2_res").val() / 100;
@@ -82,8 +69,6 @@ function result_in100g() {
     $("#weight100_total_data2_res").val(res100[3]);
     $("#ccal100_total_data2_res").val(res100[4]);
 }
-
-/**/
 
 function addIngridient() {
     var dish = {
@@ -130,8 +115,6 @@ function addIngridient() {
     }
 }
 
-/**/
-
 function Del_last() {
     var result = [
         $("#prot_total_data2_res").val(),
@@ -174,8 +157,6 @@ function Del_last() {
     $('#data2_body tr').last().remove();
 }
 
-/**/
-
 function setStorage() {
     localStorage.setItem('A_prots', $('#total_data2 .td_total_data2:eq(0)').text());
     localStorage.setItem('B_fats', $('#total_data2  .td_total_data2:eq(1)').text());
@@ -184,14 +165,10 @@ function setStorage() {
     localStorage.setItem('E_ccal', $('#total_data2  .td_total_data2:eq(4)').text());
 }
 
-/**/
-
 function name() {
     $('#res_100').text($('#res_name_create').val());
     localStorage.setItem('name', $('#res_name_create').val());
 }
-
-/**/
 
 function getStorage() {
     $('#total_data2  .td_total_data2:eq(0)').text(localStorage.getItem('A_prots'));
@@ -202,8 +179,6 @@ function getStorage() {
     Del_last();
     name();
 }
-
-/**/
 
 function calculate_data1_res() {
     var dish = {
@@ -223,8 +198,6 @@ function calculate_data1_res() {
     $("#carbs_data1_res").val(carbs);
     $("#ccal_data1_res").val(ccal);
 }
-
-/**/
 
 function Umbrien() {
     var dish_Total = [
@@ -251,8 +224,6 @@ function Umbrien() {
     idNumber++;
 }
 
-/**/
-
 function Clear_all() {
     $('#res_name_create').val('');
     $('#total_data2  .td_total_data2:eq(0)').text(0);
@@ -268,70 +239,48 @@ function Clear_all() {
     setStorage();
 }
 
-/**/
-
 $(document).ready(function() {
     getStorage();                           
 })
-
-/**/
 
 $('#id_clear_data1_res').on("click", function() {
     clear_data1_res();
 })
 
-/**/
-
 $(".non_button").keyup(function() {
     calculate_data1_res();
 })
-
-/**/
 
 $("#id_add_ingridient").on("click", function() {
     Umbrien();
     addIngridient();
 })
 
-/**/
-
 $('#res_name_create').keyup(function() {
     name();
 })
-
-/**/
 
 $('#del_last_data2_res').on("click", function() {
     Del_last();
 })
 
-/**/
-
 $("#id_add_ingridient, #del_last_data2_res, #clear_all_data2 ").on("click", function() {
     setStorage();
 })
 
-/**/
-
 $('#clear_all_data2').on("click", function() {
     Clear_all();
 })
-
-/**/
 
 $('#nav_versions').on('click', function(event) {
     event.preventDefault();
     open_versions();
 })
 
-/**/
-
 $('#nav_crmeal').on('click', function(event) {
     event.preventDefault();
     open_crmeal();
 })
-
-/**/
 
 $('#nav_saves').bind('click', function(event) {
     event.preventDefault();
@@ -340,13 +289,9 @@ $('#nav_saves').bind('click', function(event) {
 ajax_save_list();
 })
 
-/**/
-
 $('#submenu_toggle').on('click', function() {
     open_submenu();
 })
-
-/**/
 
 function ajax_save_list(){
             $.ajax({
@@ -360,13 +305,9 @@ function ajax_save_list(){
        })
 }
 
-/**/
-
 $('#nav_versions').on('click', function() {
     $("#submenu").hide();
 })
-
-/**/
 
 $('#search').bind("change keyup input click", function() {
 
@@ -374,7 +315,30 @@ $('#search').bind("change keyup input click", function() {
 
 })
 
-/**/
+$('body').on('click', '#id_save_data1', function(){
+
+    var dish_data1 = $('#dish_data1').val();
+    var prots_data1 = $('#id_proteins_data1').val();
+    var fats_data1 = $('#id_fats_data1').val(); 
+    var carbs_data1 = $('#id_carbs_data1').val();
+    var weight_data1 = $('#id_weight_data1').val();
+
+    $.ajax({
+            type: 'POST',
+            url: "../includes/save_data1.php",
+            data: {
+                'dish_data1': dish_data1,
+                'weight_data1': weight_data1,
+                'prots_data1': prots_data1,
+                'fats_data1': fats_data1,
+                'carbs_data1': carbs_data1
+            },
+            response: 'text',
+            success: function(msg){
+                $("#save_response").html(msg);
+           }
+       })
+})
 
 $('body').on('click', '.delete_btn', function(){
 
@@ -404,11 +368,12 @@ $(this).closest('table').find('span').eq('1').text();
             success: function(data){
                 $("#response").html(data).fadeIn();
            }
+
     });
 
 setTimeout(ajax_save_list, 100);
 
-})
+    })
 
 })
 
@@ -422,3 +387,21 @@ $(document).mouseup(function (e){
             $('html body').css({'overflow-y':'visible'});
         }
     });
+
+$('#id_clear_data1_res').on('click', function(){
+
+var clear = $('#id_clear_data1_res').text();
+
+    $.ajax({
+            type: 'POST',
+            url: "../includes/save_data1.php",
+            data: {
+                'clear': clear,
+            },
+            response: 'text',
+            success: function(data){
+                $("#save_response").html(data).fadeIn();
+           }
+    })
+})
+

@@ -1,9 +1,6 @@
 <?php
 
-// require 'DB_connection.php';
-require 'includes/DB_connection.php';
-
-if ( isset($_POST['save_data1']) ) {
+require 'DB_connection.php';
 
   $errors = array();
 
@@ -38,37 +35,37 @@ $result_token = mysqli_fetch_assoc($find_token_query);
 
   $check_dish = "
   SELECT * FROM `dishes` WHERE Dish = '$_POST[dish_data1]'
-  AND User = '$result_token[login]' AND Weight = '$_POST[weight_data1]' ";
+  AND Weight = '$_POST[weight_data1]'
+  AND User = '$result_token[login]'";
+
   $check_dish_query = mysqli_query($connection, $check_dish);
 
   if (mysqli_num_rows($check_dish_query) != 0) {
         $errors[] = 'Похоже, такая запись уже существует';
     }
 
+        if (isset($_POST['clear'])) {
+              echo '';
+              exit();
+          }
   if (empty($errors) == false) {
-            echo '<div style="
-            margin-top: 10px;
-            ">
-            <p style="
+            echo '<p style="
             font-size: 20px;
             color: #ED2222;
             padding: 2%
             ">'
             . array_shift($errors) .
-            '!</p>
-            </div>';
-        } else {
-          echo '<div style="
-          margin-top: 15px;
-          ">
-          <p style="
+            '!</p>';
+        } 
+
+        else {
+          echo '<p style="
           font-size: 20px;
           color: green;
           padding: 2%;  
           ">
-          Приятного аппетита, когда будешь есть ' . $_POST['dish_data1'] . ' :)
-          </p>
-          </div>';
+          Вы успешно добавили ' . $_POST['dish_data1'] . ' :)
+          </p>';
 
           // Добавляем
 
@@ -92,8 +89,6 @@ $result_token = mysqli_fetch_assoc($find_token_query);
        mysqli_query($connection, $insert_dish_query);
 
   }
-
-}
 
 mysqli_close($connection);
 ?>
