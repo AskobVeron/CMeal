@@ -376,9 +376,11 @@ $('#search').bind("change keyup input click", function() {
 
 /**/
 
-function delete_quest() {
+$('body').on('click', '.delete_btn', function(){
 
-    var delete_name = $(this).siblings().text();
+var delete_name = $(this).siblings().text();
+var delete_weight = 
+$(this).closest('table').find('span').eq('1').text();
 
     $('#black').css({'display':'block'});
     $('html body').css({'overflow-y':'hidden'});
@@ -391,15 +393,22 @@ function delete_quest() {
     });
 
     $('#yes').on('click', function(){
-        
+         $.ajax({
+            type: 'POST',
+            url: "../list_saves.php",
+            data: {
+                'delete_name': delete_name,
+                'delete_weight': delete_weight,
+            },
+            response: 'text',
+            success: function(data){
+                $("#response").html(data).fadeIn();
+           }
     });
 
-   }
+setTimeout(ajax_save_list, 100);
 
-// 
-
-$('.delete_btn').bind('click', function(){
-delete_quest();
+})
 
 })
 

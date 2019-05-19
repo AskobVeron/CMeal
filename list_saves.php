@@ -57,21 +57,20 @@ $result = mysqli_query($connection, $find_dish);
             <td style = "text-align:center;
             font-weight: 400;">
              <span class="delete_name">'. $Dish .'</span>
-         <a name="delete" onclick="delete_quest()" class="delete_btn" style=" 
+         <a name="delete" class="delete_btn" style=" 
          color:#CC0C0C;
          cursor: pointer;
          float: right;
          margin-right: 2%;
          font-weight:bold;
          font-size: 18px;">X</a>
-             </td>
              </tr>
                 <tr>
                 <td style="text-align:center">
                 Белки: ' . round($Prots) . ' (' . $column[3] . ')<br>
                 Жири: ' . round($Fats) . ' (' . $column[4] . ')<br>
                 Углеводы: ' . round($Carbs) . ' (' . $column[5] . ')<br><strong>
-                Вес: ' . round($Weight) . 'гр</strong> <br>
+                Вес: <span>' . $Weight . '</span>гр</strong> <br>
                 кКал: ' . round($kCal_total) . ' (' . $kCal_100g . ')<br>
                 </td>
                 </tr>
@@ -86,7 +85,7 @@ $result = mysqli_query($connection, $find_dish);
              font-weight: 400;
              ">
              <span class="delete_name">'. $Dish .'</span>
-         <a name="delete" onclick="delete_quest()" class="delete_btn" style=" 
+         <a name="delete" class="delete_btn" style=" 
          color:#CC0C0C;
          cursor: pointer;
          float: right;
@@ -100,7 +99,7 @@ $result = mysqli_query($connection, $find_dish);
             Белки: ' . round($Prots) . ' <br>
             Жири: ' . round($Fats) . ' <br>
             Углеводы: ' . round($Carbs) . ' <br><strong>
-            Вес: ' . round($Weight) . 'гр</strong> <br>
+            Вес: <span>' . $Weight . '</span>гр</strong> <br>
             кКал: ' . round($kCal_100g) . ' <br>
             </td>
             </tr>
@@ -117,7 +116,7 @@ WHERE `User` = '$result_token[login]'
 AND `Dish` = '$_POST[delete_name]'
 AND `Weight` = '$_POST[delete_weight]' ";
 
-$delete_dish_query = mysqli_query($connection, $delete_dish);
+mysqli_query($connection, $delete_dish);
 
 }
 
