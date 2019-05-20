@@ -167,6 +167,8 @@ display: none;
 	display: none;
 }
 #search_result li{
+	padding-bottom: 3px;
+	padding-top: 3px;
 	border-bottom: 0.5px solid #C4C2C2;
 	font-size: 16px;
 	cursor: pointer;

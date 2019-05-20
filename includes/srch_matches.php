@@ -14,7 +14,7 @@ if ( empty($_POST['input']) ) {
 } if ( !empty($_POST['input']) &&
 	  !isset($_POST['selected']) ) {
 	
-	$input = $_POST['input'];
+	$input = mysqli_real_escape_string($connection, $_POST['input']);
 	
 $find_matches = "SELECT * FROM `dishes` 
 WHERE `User` = '$result_token[login]'

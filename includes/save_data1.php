@@ -3,11 +3,14 @@
 require 'DB_connection.php';
 
   $errors = array();
+  $Dish = 
+  mysqli_real_escape_string($connection,
+    $_POST['dish_data1']);
 
   if ( !isset($_COOKIE['token'])) {
     $errors[] = 'Авторизуйтесь';
   }
-  if ( empty($_POST['dish_data1'])) {
+  if ( empty($Dish) ) {
     $errors[] = 'Введите Название';
   }
   if ( empty($_POST['weight_data1'])) {
@@ -34,7 +37,7 @@ $result_token = mysqli_fetch_assoc($find_token_query);
 
 
   $check_dish = "
-  SELECT * FROM `dishes` WHERE Dish = '$_POST[dish_data1]'
+  SELECT * FROM `dishes` WHERE Dish = '$Dish'
   AND Weight = '$_POST[weight_data1]'
   AND User = '$result_token[login]'";
 
@@ -76,7 +79,7 @@ $find_token_query = mysqli_query($connection, $find_token);
 $result_token = mysqli_fetch_assoc($find_token_query);
 
           $User = $result_token['login'];
-          $Dish = $_POST['dish_data1'];
+          $Dish = $Dish;
           $Prots = $_POST['prots_data1'];
           $Fats = $_POST['fats_data1'];
           $Carbs = $_POST['carbs_data1'];
