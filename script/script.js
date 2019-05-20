@@ -240,7 +240,7 @@ function Clear_all() {
 }
 
 $(document).ready(function() {
-    getStorage();                           
+    getStorage();
 })
 
 $('#id_clear_data1_res').on("click", function() {
@@ -404,4 +404,77 @@ var clear = $('#id_clear_data1_res').text();
            }
     })
 })
+
+$('#dish_data1').bind("change keyup input click", function() {
+
+    var input = $('#dish_data1').val();
+
+    if (input == '') { 
+        clear_data1_res();
+        return false;
+
+    } else {
+
+    $.ajax({
+            type: 'POST',
+            url: "../includes/srch_matches.php",
+            data: {
+                'input': input,
+            },
+            response: 'text',
+            success: function(data){
+
+                $('#search_result').html(data).fadeIn();
+
+           }
+       })
+
+    var tip_width = $('#dish_data1').width()
+     $('#search_result').css(
+     {'display':'block',
+      'width': tip_width});
+    }
+     
+})
+
+$('body').on('click', '.popupItem', function(){
+
+        var selected = $(this).text();
+        $('#search_result').hide('fast');
+
+        $.ajax({
+            url: "../includes/autofill.php",
+            type: 'POST',
+            data: {
+                selected: selected
+            },
+            dataType: "JSON",
+            success: function(data){
+               
+                $("#dish_data1").val(data.Dish);
+                $("#id_proteins_data1").val(data.Prots);
+                $("#id_fats_data1").val(data.Fats);
+                $("#id_carbs_data1").val(data.Carbs);
+                $("#id_weight_data1").val(data.Weight);
+                calculate_data1_res();
+           }
+       })
+
+})
+
+$('body').on('blur focusout', '#dish_data', function(){
+    var ul = $("#search_result");
+    ul.hide('fast');
+})
+
+$(document).mouseup(function (e){ 
+        var ul = $("#search_result");
+        var search = $("#dish_data1");
+        if (!ul.is(e.target) &&
+            ul.has(e.target).length === 0 &&
+            !search.is(e.target) &&
+            search.has(e.target).length === 0) { 
+            ul.hide('fast');
+        }
+    });
 

@@ -6,7 +6,7 @@ html, body {
   height: 100%;
   margin: 0;
 }
-.navbarli {
+li {
 	list-style-type: none;
 }
 hr{
@@ -153,4 +153,25 @@ display: none;
 	margin-bottom: -0.55rem;
 	float: right;
 	cursor: pointer;
+}
+#search_result{
+	border-radius: 6px;
+	border: 1px solid #3B3B3B;
+	margin:0; 
+	height: auto;
+	padding:10px; 
+	list-style:none;
+	background:#fff; 
+	color:#333;
+	position: fixed;
+	display: none;
+}
+#search_result li{
+	font-size: 16px;
+	cursor: pointer;
+	padding-left: 10px;
+	font-weight: normal;
+}
+#search_result li:hover{
+	background-color: #E4E3E3;
 }

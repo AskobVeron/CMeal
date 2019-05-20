@@ -3,11 +3,10 @@
 
 <head>
 <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <meta name="google-site-verification" content="U79wNeLag2vPIWpgdBv1OHEBSTlHkuKk5nM4SCXMTjI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
     <link href="style/style.css" rel="stylesheet" type="text/css">
     <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>CMeal</title>
 </head>
 
@@ -128,8 +127,9 @@ exit();}?>
             <thead>
                 <tr>
                     <th class="dish_name_trsl" id="name_dish_data1">Продукт</th>
-                    <th colspan="2"><input class="" id="dish_data1" name="dish_data1" type="text">
-                        <ul class="search_result"></ul>
+                    <th colspan="2">
+                        <input class="non_button" id="dish_data1" name="dish_data1" type="text">
+                        <ul id="search_result"></ul>
                     </th>
                 </tr>
             </thead>

@@ -47,7 +47,9 @@ $result = mysqli_query($connection, $find_dish);
         $Fats = $column[4]*$factor;
         $Carbs = $column[5]*$factor;
         $kCal_total = ($Prots*4)+($Fats*9)+($Carbs*4);
-        $kCal_100g = ($column[3]*4)+($column[4]*9)+($column[5]*4);
+        $kCal_100g = ($column[3]*4)+
+        ($column[4]*9)+
+        ($column[5]*4);
 
 
     if ($Weight != 100) {
@@ -122,7 +124,6 @@ mysqli_query($connection, $delete_dish);
 
 echo "</div>";
 
-mysqli_close($connection);
 ?>
 
 
