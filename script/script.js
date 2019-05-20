@@ -410,8 +410,8 @@ $('#dish_data1').bind("change keyup input click", function() {
     var input = $('#dish_data1').val();
 
     if (input == '') { 
-        clear_data1_res();
-        return false;
+        var ul = $("#search_result");
+        ul.hide('fast');
 
     } else {
 
@@ -457,6 +457,9 @@ $('body').on('click', '.popupItem', function(){
                 $("#id_carbs_data1").val(data.Carbs);
                 $("#id_weight_data1").val(data.Weight);
                 calculate_data1_res();
+                 $("#id_weight_data1").focus();
+                var ul = $("#search_result");
+                ul.hide('fast');
            }
        })
 

@@ -163,10 +163,11 @@ display: none;
 	list-style:none;
 	background:#fff; 
 	color:#333;
-	position: fixed;
+	position: absolute;
 	display: none;
 }
 #search_result li{
+	border-bottom: 0.5px solid #C4C2C2;
 	font-size: 16px;
 	cursor: pointer;
 	padding-left: 10px;
