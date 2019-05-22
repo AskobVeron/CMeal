@@ -457,7 +457,6 @@ $('body').on('click', '.popupItem', function(){
                 $("#id_carbs_data1").val(data.Carbs);
                 $("#id_weight_data1").val(data.Weight);
                 calculate_data1_res();
-                 $("#id_weight_data1").focus();
                 var ul = $("#search_result");
                 ul.hide('fast');
            }
@@ -481,3 +480,27 @@ $(document).mouseup(function (e){
         }
     });
 
+$('#id_save_data2').on('click', function() {
+    
+    var dish_data1 = $('#res_name_create').val();
+    var prots_data1 = $('#prot100_total_data2_res').text();
+    var fats_data1 = $('#fats100_total_data2_res').text(); 
+    var carbs_data1 = $('#carbs100_total_data2_res').text();
+    var weight_data1 = $('#weight_total_data2_res').text();
+
+    $.ajax({
+            type: 'POST',
+            url: "../includes/save_data1.php",
+            data: {
+                'dish_data1': dish_data1,
+                'weight_data1': weight_data1,
+                'prots_data1': prots_data1,
+                'fats_data1': fats_data1,
+                'carbs_data1': carbs_data1
+            },
+            response: 'text',
+            success: function(msg){
+                $("#save_response").html(msg);
+           }
+       })
+})

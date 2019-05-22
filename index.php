@@ -168,12 +168,15 @@ exit();}?>
                 </td>
             </tr>
         </table>
-        <button class="btn btn-outline-primary data1_buttons" 
-        id="id_save_data1" type="submit" name="save_data1" 
-        value="Сохранить ↑↑">Сохранить ↑↑</button>
-        <button name="clear" class="btn btn-outline-dark data1_buttons" 
+        <button name="clear" 
+        class="btn btn-outline-dark data1_buttons" 
         id="id_clear_data1_res">
         Очистить</button>
+
+        <button class="btn btn-outline-primary save_buttons data1_buttons" 
+        id="id_save_data1" type="submit" name="save_data1" 
+        value="Сохранить ↑↑">Сохранить ↑↑</button>
+        
         <button class="btn btn-outline-success data1_buttons" 
         id="id_add_ingridient">Добавить</button>
 
@@ -181,8 +184,11 @@ exit();}?>
         
         <hr>
         <button class="btn btn-outline-dark data2_buttons" id="del_last_data2_res">Отменить</button>
+        <button class="btn btn-outline-primary save_buttons data2_buttons" 
+        id="id_save_data2" type="submit" name="save_data2" 
+        value="Сохранить ↑↑">Сохранить ↓↓</button>
         <button class="btn btn-outline-danger data2_buttons" id="clear_all_data2">
-        Очистить всё</button>
+        Очистить всё</button><br>
         <div class="table-responsive">
             <table class="table" id="data2">
                 <thead class="thead-dark">

@@ -3,6 +3,7 @@
 require 'DB_connection.php';
 
   $errors = array();
+
   $Dish = 
   mysqli_real_escape_string($connection,
     $_POST['dish_data1']);
@@ -38,7 +39,6 @@ $result_token = mysqli_fetch_assoc($find_token_query);
 
   $check_dish = "
   SELECT * FROM `dishes` WHERE Dish = '$Dish'
-  AND Weight = '$_POST[weight_data1]'
   AND User = '$result_token[login]'";
 
   $check_dish_query = mysqli_query($connection, $check_dish);

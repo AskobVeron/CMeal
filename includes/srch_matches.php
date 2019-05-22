@@ -22,6 +22,7 @@ AND `Dish` LIKE '$input%' OR `Dish`
 LIKE '%$input%' AND `User` = '$result_token[login]' 
 ORDER BY `id` DESC limit 5";
 
+
 $matches = mysqli_query($connection, $find_matches);
 
 if( mysqli_num_rows($matches) !== 0 ) {
@@ -29,15 +30,13 @@ if( mysqli_num_rows($matches) !== 0 ) {
     while ( $col_match = mysqli_fetch_row($matches) ) {
 
         $Dish_mtchs = $col_match[2];
+        $Weight_mtchs = $col_match[6];
 
-        echo '<li class="popupItem">'. $Dish_mtchs .'</li>';
+       echo '<li class="popupItem">' . $Dish_mtchs . '</li>';
 
 		}
 
-	} else {
-		
-		exit();
-	}
+	} else {exit();}
 
 }
 

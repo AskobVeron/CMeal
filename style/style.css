@@ -45,9 +45,11 @@ hr{
 #result_name_data2_head{
 	margin-left: 8px;
 }
-.data1_buttons{
+.data1_buttons {
 	margin-top: 10px;
-	margin-bottom: 15px
+}
+.data2_buttons {
+	margin-top: 10px;
 }
 .navbar {
 	margin-left: -10px;
@@ -169,7 +171,7 @@ display: none;
 #search_result li{
 	padding-bottom: 3px;
 	padding-top: 3px;
-	border-bottom: 0.5px solid #C4C2C2;
+	border-bottom: 0.5px solid #B1AFAF;
 	font-size: 16px;
 	cursor: pointer;
 	padding-left: 10px;
@@ -177,4 +179,7 @@ display: none;
 }
 #search_result li:hover{
 	background-color: #E4E3E3;
+}
+.save_buttons{
+	float: right;
 }
