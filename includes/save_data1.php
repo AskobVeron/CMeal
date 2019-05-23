@@ -4,9 +4,11 @@ require 'DB_connection.php';
 
   $errors = array();
 
-  $Dish = 
-  mysqli_real_escape_string($connection,
+  $Dish = mysqli_real_escape_string(
+    $connection,
     $_POST['dish_data1']);
+
+  $Weight = $_POST['weight_data1'];
 
   if ( !isset($_COOKIE['token'])) {
     $errors[] = 'Авторизуйтесь';
@@ -36,10 +38,12 @@ WHERE token = '$_COOKIE[token]' ";
 $find_token_query = mysqli_query($connection, $find_token);
 $result_token = mysqli_fetch_assoc($find_token_query);
 
+$Login = $result_token['login'];
 
   $check_dish = "
   SELECT * FROM `dishes` WHERE Dish = '$Dish'
-  AND User = '$result_token[login]'";
+  AND User = '$Login'
+  AND Weight = '$Weight'";
 
   $check_dish_query = mysqli_query($connection, $check_dish);
 

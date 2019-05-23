@@ -2,24 +2,28 @@
 include 'DB_connection.php';
 
 $find_token = " SELECT * FROM `users` 
-WHERE `token` = '$_COOKIE[token]' ";
+WHERE token = '$_COOKIE[token]' ";
 
 $find_token_query = mysqli_query($connection, $find_token);
 $result_token = mysqli_fetch_assoc($find_token_query);
+
+$Login = $result_token['login'];
 
 if ( empty($_POST['input']) ) {
 
 	exit();
 
 } if ( !empty($_POST['input']) &&
-	  !isset($_POST['selected']) ) {
-	
-	$input = mysqli_real_escape_string($connection, $_POST['input']);
+	   !isset($_POST['selected']) ) {
+
+	$input = mysqli_real_escape_string(
+		$connection, 
+		$_POST['input']);
 	
 $find_matches = "SELECT * FROM `dishes` 
 WHERE `User` = '$result_token[login]'
 AND `Dish` LIKE '$input%' OR `Dish` 
-LIKE '%$input%' AND `User` = '$result_token[login]' 
+LIKE '%$input%' AND `User` = '$Login' 
 ORDER BY `id` DESC limit 5";
 
 
@@ -32,11 +36,43 @@ if( mysqli_num_rows($matches) !== 0 ) {
         $Dish_mtchs = $col_match[2];
         $Weight_mtchs = $col_match[6];
 
-       echo '<li class="popupItem">' . $Dish_mtchs . '</li>';
+    	$check_name = "SELECT * FROM `dishes` 
+		WHERE Dish = '$Dish_mtchs'
+		AND `User` = '$Login'";
 
-		}
+		$check_name_query = mysqli_query(
+			$connection, 
+			$check_name);
 
-	} else {exit();}
+		if ( mysqli_num_rows($check_name_query) > 1 ) {
+
+			if ( strlen($Dish_mtchs) >= 17) {
+		echo '<li class="popupItem"><span class="name_D">' 
+      . $Dish_mtchs . 
+      '</span>'
+      . PHP_EOL . 
+      '(<span class="name_W">'
+      . $Weight_mtchs . 
+       '</span>гр)</li>';
+			} else {
+
+       echo '<li class="popupItem"><span class="name_D">' 
+      . $Dish_mtchs . 
+      '</span> (<span class="name_W">'
+      . $Weight_mtchs . 
+       '</span>гр)</li>';
+   }
+
+		} else {
+			echo '<li class="popupItem"><span class="name_D">'
+			 . $Dish_mtchs . 
+			 '</span></li>';
+	  }
+
+
+	}
+
+} else {exit();}
 
 }
 

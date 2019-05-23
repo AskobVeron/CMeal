@@ -430,23 +430,27 @@ $('#dish_data1').bind("change keyup input click", function() {
        })
 
     var tip_width = $('#dish_data1').width()
+
      $('#search_result').css(
      {'display':'block',
       'width': tip_width});
+
     }
-     
+
 })
 
 $('body').on('click', '.popupItem', function(){
 
-        var selected = $(this).text();
+        var selected = $(this).children('.name_D').text();
+        var selected_W = $(this).children('.name_W').text();
         $('#search_result').hide('fast');
 
         $.ajax({
             url: "../includes/autofill.php",
             type: 'POST',
             data: {
-                selected: selected
+                selected: selected,
+                selected_W: selected_W
             },
             dataType: "JSON",
             success: function(data){
@@ -461,7 +465,6 @@ $('body').on('click', '.popupItem', function(){
                 ul.hide('fast');
            }
        })
-
 })
 
 $('body').on('blur focusout', '#dish_data', function(){

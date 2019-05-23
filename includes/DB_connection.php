@@ -7,8 +7,13 @@ $connection = mysqli_connect(
 	$db_connection['password'], 
 	$db_connection['database_name']);
 
-if ($connection == false)
-  {
-    exit("Error: " . mysqli_connect_error());
+if (!$connection) {
+
+    $connection = mysqli_connect(
+	$db_connection_HOST['host'], 
+	$db_connection_HOST['login'], 
+	$db_connection_HOST['password'], 
+	$db_connection_HOST['database_name']);
+
   }
  ?>

@@ -7,18 +7,31 @@ if ( !isset($_POST['selected']) ) {exit();}
 
 else {
 
-
 $find_token = " SELECT * FROM `users` 
-WHERE `token` = '$_COOKIE[token]' ";
+WHERE token = '$_COOKIE[token]' ";
 
 $find_token_query = mysqli_query($connection, $find_token);
 $result_token = mysqli_fetch_assoc($find_token_query);
 
+$Login = $result_token['login'];
+
 	$selected = $_POST['selected'];
+	$selected_W = $_POST['selected_W'];
+
+	if (empty($selected_W)) {
 
 $find_match = "SELECT * FROM `dishes` 
-WHERE `User` = '$result_token[login]'
-AND `Dish` = '$selected' ";
+WHERE `User` = '$Login'
+AND `Dish` = '$selected'";
+
+	} else {
+
+$find_match = "SELECT * FROM `dishes` 
+WHERE `User` = '$Login'
+AND `Dish` = '$selected'
+AND `Weight` = '$selected_W' ";
+
+}
 
 $match = mysqli_query($connection, $find_match);
 
