@@ -170,7 +170,7 @@ display: none;
 }
 #search_result li{
 	width: auto;
-	white-space: normal;
+	text-overflow: ellipsis; 
 	overflow-x:hidden;
 	padding-bottom: 3px;
 	padding-top: 3px;
