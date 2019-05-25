@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 04 2019 г., 22:55
+-- Время создания: Май 25 2019 г., 01:12
 -- Версия сервера: 10.3.14-MariaDB-100.cba
 -- Версия PHP: 7.1.29
 
@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `dishes` (
   `id` int(11) NOT NULL,
   `User` varchar(50) NOT NULL,
-  `Dish` varchar(50) NOT NULL,
-  `Prots` int(11) NOT NULL DEFAULT 0,
-  `Fats` int(11) NOT NULL DEFAULT 0,
-  `Carbs` int(11) NOT NULL DEFAULT 0,
-  `Weight` int(11) NOT NULL
+  `Dish` varchar(100) NOT NULL,
+  `Prots` int(11) DEFAULT 0,
+  `Fats` int(11) DEFAULT 0,
+  `Carbs` int(11) DEFAULT 0,
+  `Weight` int(11) NOT NULL DEFAULT 100
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -46,8 +46,21 @@ INSERT INTO `dishes` (`id`, `User`, `Dish`, `Prots`, `Fats`, `Carbs`, `Weight`) 
 (62, 'AskobVeron', 'Творог 10% с ванилином', 14, 10, 11, 300),
 (63, 'AskobVeron', 'Йогурт 2,5%', 3, 3, 10, 450),
 (64, 'AskobVeron', 'Творог 18%', 15, 18, 3, 100),
-(65, 'AskobVeron', 'Гречка', 4, 1, 21, 300),
-(66, 'AskobVeron', 'Гречка с мясом', 11, 19, 28, 100);
+(66, 'AskobVeron', 'Гречка с мясом', 11, 19, 28, 100),
+(123, 'AskobVeron', 'Банан', 2, 0, 20, 90),
+(142, 'Rusak', 'Печенье', 8, 12, 75, 200),
+(111, 'gerasickin19', 'Овсянка ', 16, 7, 25, 100),
+(76, 'NE Jugyl', 'Мяса', 21, 16, 0, 350),
+(77, 'NE Jugyl', 'Печиние', 8, 12, 75, 100),
+(78, 'NE Jugyl', 'Гречка', 13, 5, 72, 100),
+(79, 'NE Jugyl', 'Маслята', 3, 1, 2, 100),
+(80, 'NE Jugyl', 'Шиповник', 2, 0, 14, 100),
+(81, 'AskobVeron', '2 блина с творогом', 10, 8, 21, 180),
+(115, 'NE Jugyl', 'Сыр', 24, 30, 0, 200),
+(126, 'AskobVeron', 'Печенье', 8, 12, 75, 40),
+(151, 'AskobVeron', '3 Яйца', 12, 11, 10, 240),
+(161, 'Artem', 'Морожина', 2, 6, 25, 85),
+(167, 'AskobVeron', 'Гречка варенная', 4, 1, 21, 300);
 
 -- --------------------------------------------------------
 
@@ -78,7 +91,10 @@ INSERT INTO `users` (`id`, `token`, `login`, `email`, `password`, `date`) VALUES
 (32, '343f2a0b30b70f515f88c04b9d98a476', 'nikita_lenov', 'hdjdjxjdh@hshdjd.com', '93abcf6505b8a2eb288af468be0c62c9', '2019-05-03 21:10:37'),
 (33, '7bc43bb891f3bdae6caf5680ef3c1309', 'Ser Bob', 'djtourist11@gmail.com', 'e807f1fcf82d132f9bb018ca6738a19f', '2019-05-03 21:10:55'),
 (34, '785d2f647440bef95c9088769799aca2', 'gerasickin19', 'gerasickinviktor@gmail.com', 'a82b542baf0ca2ffce662d1d43f523fc', '2019-05-03 21:11:15'),
-(35, '844567f880d18745038daa6925812731', 'Debiljaka', 'huisos@gmail.com', '95d47be0d380a7cd3bb5bbe78e8bed49', '2019-05-03 21:11:54');
+(35, '844567f880d18745038daa6925812731', 'Debiljaka', 'huisos@gmail.com', '95d47be0d380a7cd3bb5bbe78e8bed49', '2019-05-03 21:11:54'),
+(37, '24fb151327fab8872519d3816afd0ec7', 'NE Jugyl', 'istomin02@mail.ua', '2af9b1ba42dc5eb01743e6b3759b6e4b', '2019-05-10 10:04:08'),
+(42, '64f6513d7f591ac744ce68f5e063dc7a', 'Rusak', 'ruslanoklim8@gmail.com', 'a40d9d9570f211e5b539964d96e56434', '2019-05-20 19:12:13'),
+(43, '036d7966a2f136e558bd39a2048f8026', 'Artem', 'fjdkrkeke@fjfjfjdj', '44b835ef56e112e86194df2cfdf82e06', '2019-05-23 12:56:24');
 
 --
 -- Индексы сохранённых таблиц
@@ -106,12 +122,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `dishes`
 --
 ALTER TABLE `dishes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

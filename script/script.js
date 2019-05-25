@@ -2,11 +2,13 @@ var res100 = new Array(5);
 var idNumber = 1;
 var result_minus_tr = new Array(5);
 
-function open_submenu() {
+function open_submenu() 
+{
     $("#submenu").toggle();
 }
 
-function open_versions() {
+function open_versions() 
+{
     $('#body').css({ 'display': 'none' });
     $('#saves').css({ 'display': 'none' });
     $('body').css({ 'background-color': '#F4F1F1' });
@@ -17,7 +19,8 @@ function open_versions() {
     $("#submenu").css({ 'display': 'none' });
 }
 
-function open_crmeal() {
+function open_crmeal() 
+{
     $('#body').css({ 'display': 'block' });
     $('body').css({ 'background-color': '#FFFFFF' });
     $('#versions').css({ 'display': 'none' });
@@ -29,7 +32,8 @@ function open_crmeal() {
     $("#submenu").css({ 'display': 'none' });
 }
 
-function open_saves() {
+function open_saves()
+{
     $('#body').css({ 'display': 'none' });
     $('#versions').css({ 'display': 'none' });
     $('#saves').css({ 'display': 'block' });
@@ -54,7 +58,8 @@ function clear_data1_res() {
     $("#id_weight_data1").val(null);
 }
 
-function result_in100g() {
+function result_in100g() 
+{
     var factor = $("#weight_total_data2_res").val() / 100;
     var res100 = [
         Math.round($("#prot_total_data2_res").val() / factor),
@@ -70,7 +75,8 @@ function result_in100g() {
     $("#ccal100_total_data2_res").val(res100[4]);
 }
 
-function addIngridient() {
+function addIngridient() 
+{
     var dish = {
         name: $("#dish_data1").val(),
         proteins: $("#id_proteins_data1").val(),
@@ -115,25 +121,30 @@ function addIngridient() {
     }
 }
 
-function Del_last() {
-    var result = [
+function Del_last() 
+{
+    var result = 
+    [
         $("#prot_total_data2_res").val(),
         $("#fats_total_data2_res").val(),
         $("#carbs_total_data2_res").val(),
         $("#weight_total_data2_res").val(),
         $("#ccal_total_data2_res").val()
     ];
-    var tr_data2_last = [
+    var tr_data2_last = 
+    [
         $('#data2_body tr:last-child .editable:eq(0)').text(),
         $('#data2_body tr:last-child .editable:eq(1)').text(),
         $('#data2_body tr:last-child .editable:eq(2)').text(),
         $('#data2_body tr:last-child .editable:eq(3)').text(),
         $('#data2_body tr:last-child .editable:eq(4)').text()
     ];
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < 5; i++) 
+    {
         result_minus_tr[i] = result[i] - tr_data2_last[i];
     }
-    result = [
+    result = 
+    [
         $("#prot_total_data2_res").val(result_minus_tr[0]),
         $("#fats_total_data2_res").val(result_minus_tr[1]),
         $("#carbs_total_data2_res").val(result_minus_tr[2]),
@@ -157,7 +168,8 @@ function Del_last() {
     $('#data2_body tr').last().remove();
 }
 
-function setStorage() {
+function setStorage() 
+{
     localStorage.setItem('A_prots', $('#total_data2 .td_total_data2:eq(0)').text());
     localStorage.setItem('B_fats', $('#total_data2  .td_total_data2:eq(1)').text());
     localStorage.setItem('C_carbs', $('#total_data2 .td_total_data2:eq(2)').text());
@@ -165,12 +177,14 @@ function setStorage() {
     localStorage.setItem('E_ccal', $('#total_data2  .td_total_data2:eq(4)').text());
 }
 
-function name() {
+function name() 
+{
     $('#res_100').text($('#res_name_create').val());
     localStorage.setItem('name', $('#res_name_create').val());
 }
 
-function getStorage() {
+function getStorage() 
+{
     $('#total_data2  .td_total_data2:eq(0)').text(localStorage.getItem('A_prots'));
     $('#total_data2  .td_total_data2:eq(1)').text(localStorage.getItem('B_fats'));
     $('#total_data2  .td_total_data2:eq(2)').text(localStorage.getItem('C_carbs'));
@@ -180,8 +194,10 @@ function getStorage() {
     name();
 }
 
-function calculate_data1_res() {
-    var dish = {
+function calculate_data1_res() 
+{
+    var dish = 
+    {
         name: $("#dish_data1").val(),
         proteins: $("#id_proteins_data1").val(),
         fats: $("#id_fats_data1").val(),
@@ -199,8 +215,10 @@ function calculate_data1_res() {
     $("#ccal_data1_res").val(ccal);
 }
 
-function Umbrien() {
-    var dish_Total = [
+function Umbrien() 
+{
+    var dish_Total = 
+    [
         idNumber,
         document.getElementById('dish_data1').value,
         document.getElementById('proteins_data1_res').value,
@@ -224,7 +242,8 @@ function Umbrien() {
     idNumber++;
 }
 
-function Clear_all() {
+function Clear_all() 
+{
     $('#res_name_create').val('');
     $('#total_data2  .td_total_data2:eq(0)').text(0);
     $('#total_data2  .td_total_data2:eq(1)').text(0);
@@ -239,61 +258,8 @@ function Clear_all() {
     setStorage();
 }
 
-$(document).ready(function() {
-    getStorage();
-})
-
-$('#id_clear_data1_res').on("click", function() {
-    clear_data1_res();
-})
-
-$(".non_button").keyup(function() {
-    calculate_data1_res();
-})
-
-$("#id_add_ingridient").on("click", function() {
-    Umbrien();
-    addIngridient();
-})
-
-$('#res_name_create').keyup(function() {
-    name();
-})
-
-$('#del_last_data2_res').on("click", function() {
-    Del_last();
-})
-
-$("#id_add_ingridient, #del_last_data2_res, #clear_all_data2 ").on("click", function() {
-    setStorage();
-})
-
-$('#clear_all_data2').on("click", function() {
-    Clear_all();
-})
-
-$('#nav_versions').on('click', function(event) {
-    event.preventDefault();
-    open_versions();
-})
-
-$('#nav_crmeal').on('click', function(event) {
-    event.preventDefault();
-    open_crmeal();
-})
-
-$('#nav_saves').bind('click', function(event) {
-    event.preventDefault();
-    open_saves();
-
-ajax_save_list();
-})
-
-$('#submenu_toggle').on('click', function() {
-    open_submenu();
-})
-
-function ajax_save_list(){
+function ajax_save_list()
+{
             $.ajax({
             type: 'POST',
             url: "../list_saves.php",
@@ -305,18 +271,8 @@ function ajax_save_list(){
        })
 }
 
-$('#nav_versions').on('click', function() {
-    $("#submenu").hide();
-})
-
-$('#search').bind("change keyup input click", function() {
-
-     ajax_save_list();
-
-})
-
-$('body').on('click', '#id_save_data1', function(){
-
+function save_data1() 
+{
     var dish_data1 = $('#dish_data1').val();
     var prots_data1 = $('#id_proteins_data1').val();
     var fats_data1 = $('#id_fats_data1').val(); 
@@ -338,25 +294,118 @@ $('body').on('click', '#id_save_data1', function(){
                 $("#save_response").html(msg);
            }
        })
+}
+
+$(document).ready(function()
+{
+    getStorage();
 })
 
-$('body').on('click', '.delete_btn', function(){
+$('#id_clear_data1_res').on("click", 
+function()
+{
+    clear_data1_res();
+})
 
-var delete_name = $(this).siblings().text();
-var delete_weight = 
-$(this).closest('table').find('span').eq('1').text();
+$(".non_button").keyup(
+function()
+{
+    calculate_data1_res();
+})
+
+$("#id_add_ingridient").on("click", 
+function()
+{
+    Umbrien();
+    addIngridient();
+})
+
+$('#res_name_create').keyup(
+function()
+{
+    name();
+})
+
+$('#del_last_data2_res').on("click", 
+function(){
+    Del_last();
+})
+
+$("#id_add_ingridient, #del_last_data2_res, #clear_all_data2 ").on("click", 
+function(){
+    setStorage();
+})
+
+$('#clear_all_data2').on("click", 
+function() {
+    Clear_all();
+})
+
+$('#nav_versions').on('click', 
+function(event) {
+    event.preventDefault();
+    open_versions();
+})
+
+$('#nav_crmeal').on('click', 
+function(event) {
+    event.preventDefault();
+    open_crmeal();
+})
+
+$('#nav_saves').bind('click', 
+function(event) {
+    event.preventDefault();
+    open_saves();
+    ajax_save_list();
+})
+
+$('#submenu_toggle').on('click',
+function() {
+    open_submenu();
+})
+
+$('#nav_versions').on('click', 
+function() {
+    $("#submenu").hide();
+})
+
+$('#search').bind("change keyup input click", 
+function() 
+{
+     ajax_save_list();
+})
+
+$('body').on('click', '#id_save_data1',
+function()
+{
+    save_data1();
+})
+
+
+$('body').on('click', '.delete_btn', 
+function()
+{
+    var delete_name = $(this).siblings().text();
+    var delete_weight = 
+    $(this).closest('table').find('span').eq('1').text();
+
 
     $('#black').css({'display':'block'});
     $('html body').css({'overflow-y':'hidden'});
     $('#confirm').css({ 'display': 'inline-block' });
 
-    $('#no, #yes').on('click', function(){
+    $('#no, #yes').on('click', 
+    function()
+    {
         $('#black').css({'display':'none'});
         $('#confirm').css({ 'display': 'none' });
         $('html body').css({'overflow-y':'visible'});
     });
 
-    $('#yes').on('click', function(){
+    $('#yes').on('click', 
+        function()
+        {
          $.ajax({
             type: 'POST',
             url: "../list_saves.php",
@@ -365,19 +414,20 @@ $(this).closest('table').find('span').eq('1').text();
                 'delete_weight': delete_weight,
             },
             response: 'text',
-            success: function(data){
+            success: function(data)
+            {
                 $("#response").html(data).fadeIn();
-           }
-
+            }
     });
 
 setTimeout(ajax_save_list, 100);
 
     })
-
 })
 
-$(document).mouseup(function (e){ 
+$(document).mouseup(
+function (e)
+{ 
         var div = $("#confirm");
         var black = $('#black'); 
         if (!div.is(e.target) &&
@@ -388,7 +438,9 @@ $(document).mouseup(function (e){
         }
     });
 
-$('#id_clear_data1_res').on('click', function(){
+$('#id_clear_data1_res').on('click', 
+function()
+{
 
 var clear = $('#id_clear_data1_res').text();
 
@@ -399,13 +451,16 @@ var clear = $('#id_clear_data1_res').text();
                 'clear': clear,
             },
             response: 'text',
-            success: function(data){
+            success: function(data)
+            {
                 $("#save_response").html(data).fadeIn();
-           }
+            }
     })
 })
 
-$('#dish_data1').bind("change keyup input click", function() {
+$('#dish_data1').bind("change keyup input click", 
+function() 
+{
 
     var input = $('#dish_data1').val();
 
@@ -422,11 +477,12 @@ $('#dish_data1').bind("change keyup input click", function() {
                 'input': input,
             },
             response: 'text',
-            success: function(data){
+            success: function(data)
+            {
 
                 $('#search_result').html(data).fadeIn();
 
-           }
+            }
        })
 
     var tip_width = $('#dish_data1').width()
@@ -439,7 +495,9 @@ $('#dish_data1').bind("change keyup input click", function() {
 
 })
 
-$('body').on('click', '.popupItem', function(){
+$('body').on('click', '.popupItem', 
+function()
+{
 
         var selected = $(this).children('.name_D').text();
         var selected_W = $(this).children('.name_W').text();
@@ -467,12 +525,16 @@ $('body').on('click', '.popupItem', function(){
        })
 })
 
-$('body').on('blur focusout', '#dish_data', function(){
+$('body').on('blur focusout', '#dish_data', 
+function()
+{
     var ul = $("#search_result");
     ul.hide('fast');
 })
 
-$(document).mouseup(function (e){ 
+$(document).mouseup(
+function (e)
+{ 
         var ul = $("#search_result");
         var search = $("#dish_data1");
         if (!ul.is(e.target) &&
@@ -483,8 +545,9 @@ $(document).mouseup(function (e){
         }
     });
 
-$('#id_save_data2').on('click', function() {
-    
+$('#id_save_data2').on('click', 
+function() 
+{
     var dish_data1 = $('#res_name_create').val();
     var prots_data1 = $('#prot100_total_data2_res').text();
     var fats_data1 = $('#fats100_total_data2_res').text(); 
@@ -502,7 +565,8 @@ $('#id_save_data2').on('click', function() {
                 'carbs_data1': carbs_data1
             },
             response: 'text',
-            success: function(msg){
+            success: function(msg)
+           {
                 $("#save_response").html(msg);
            }
        })
