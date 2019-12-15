@@ -132,12 +132,9 @@
 			email: 31012018kh@gmail.com<br>
 			password: Qwerty123<br></td>
 		</tr>
-	</table>
-</body>
-</html>
 
 <tr style="text-align: center;">
-            <td>login: <strong>AskobVeronTEST</strong><br>
-email: Tajjga7871@ukr.net<br>
-password: fbrqwe00<br></td>
+            <td>login: <strong>Sosu Jopu</strong><br>
+email: Nutupopochilit@mail.ru<br>
+password: qwerty09956<br></td>
             </tr>

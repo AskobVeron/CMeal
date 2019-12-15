@@ -156,7 +156,7 @@ svg {
 	vertical-align: middle
 }
 table {
-	border-collapse: collapse
+	border-collapse: collapse;
 }
 caption {
 	padding-top: .75rem;
@@ -1323,6 +1323,7 @@ pre code {
 }
 .table td, .table th {
 	padding: .75rem;
+	padding-left: 1.3rem;
 	/*vertical-align: top;*/
 	border-top: 1px solid #dee2e6
 }
@@ -3985,7 +3986,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 }
 .badge {
 	display: inline-block;
-	padding: .25em .4em;
+	padding: .5em .4em;
 	font-size: 75%;
 	font-weight: 700;
 	line-height: 1;

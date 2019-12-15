@@ -9,6 +9,32 @@
 <body>
     <h1 class="first_row">All Versions</h1>
 
+        <div class="card">
+        <!-- new block -->
+
+
+        <div class="card-body">
+            <h5 class="card-title bg-primary">CrMeal v2.1</h5>
+
+
+            <p class="card-text">New:</p>
+
+
+            <ul>
+                <li>
+                    Added History
+                </li>
+
+
+                <li>
+                    Some bug fixes
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <hr class="hr_versions">
+
 
     <div class="card">
         <!-- new block -->
@@ -23,12 +49,12 @@
 
             <ul>
                 <li>
-                    <h5>Added authorization</h5>
+                    Added authorization
                 </li>
 
 
                 <li>
-                    <h5>Added save-list</h5>
+                   Added save-list
                 </li>
             </ul>
         </div>

@@ -1,5 +1,6 @@
 var res100 = new Array(5);
 var idNumber = 1;
+var idNumber_his = 1;
 var result_minus_tr = new Array(5);
 
 function open_submenu() 
@@ -11,10 +12,12 @@ function open_versions()
 {
     $('#body').css({ 'display': 'none' });
     $('#saves').css({ 'display': 'none' });
+    $('#history').css({ 'display': 'none' });
     $('body').css({ 'background-color': '#F4F1F1' });
     $('#versions').css({ 'display': 'block' });
     $('#nav_crmeal').removeClass('active_nav');
     $('#nav_saves').removeClass('active_nav');
+    $('#nav_history').removeClass('active_nav');
     $('.under2_menu').css({ 'display': 'none' })
     $("#submenu").css({ 'display': 'none' });
 }
@@ -24,10 +27,12 @@ function open_crmeal()
     $('#body').css({ 'display': 'block' });
     $('body').css({ 'background-color': '#FFFFFF' });
     $('#versions').css({ 'display': 'none' });
+    $('#history').css({ 'display': 'none' });
     $('#saves').css({ 'display': 'none' });
     $('#nav_versions').removeClass('active_nav');
     $('#nav_crmeal').addClass('active_nav');
     $('#nav_saves').removeClass('active_nav');
+    $('#nav_history').removeClass('active_nav');
     $('.under2_menu').css({ 'display': 'none' })
     $("#submenu").css({ 'display': 'none' });
 }
@@ -37,10 +42,25 @@ function open_saves()
     $('#body').css({ 'display': 'none' });
     $('#versions').css({ 'display': 'none' });
     $('#saves').css({ 'display': 'block' });
+    $('#history').css({ 'display': 'none' });
     $('body').css({ 'background-color': '#FFFFFF' });
     $('#nav_versions').removeClass('active_nav');
     $('#nav_crmeal').removeClass('active_nav');
-    $('#nav_saves').addClass('active_nav');
+    $('#nav_history').removeClass('active_nav');
+    $('.under2_menu').css({ 'display': 'none' })
+    $("#submenu").css({ 'display': 'none' });
+}
+
+function open_history()
+{
+    $('#body').css({ 'display': 'none' });
+    $('#versions').css({ 'display': 'none' });
+    $('#saves').css({ 'display': 'none' });
+    $('#history').css({ 'display': 'block' });
+    $('body').css({ 'background-color': '#FFFFFF' });
+    $('#nav_versions').removeClass('active_nav');
+    $('#nav_crmeal').removeClass('active_nav');
+    $('#nav_history').addClass('active_nav');
     $('.under2_menu').css({ 'display': 'none' })
     $("#submenu").css({ 'display': 'none' });
 }
@@ -99,11 +119,11 @@ function addIngridient()
     var ccal2 = parseInt($("#ccal_total_data2_res").val());
     var weight2 = parseInt($("#weight_total_data2_res").val());
     var data2_res = [
-        $("#prot_total_data2_res").val(proteins + proteins2),
-        $("#fats_total_data2_res").val(fats + fats2),
-        $("#carbs_total_data2_res").val(carbs + carbs2),
-        $("#ccal_total_data2_res").val(ccal + ccal2),
-        $("#weight_total_data2_res").val((dish.weight * 100) + weight2)
+        $("#prot_total_data2_res").val(Math.round(proteins + proteins2).toFixed(0)),
+        $("#fats_total_data2_res").val(Math.round(fats + fats2).toFixed(0)),
+        $("#carbs_total_data2_res").val(Math.round(carbs + carbs2).toFixed(0)),
+        $("#ccal_total_data2_res").val(Math.round(ccal + ccal2).toFixed(0)),
+        $("#weight_total_data2_res").val(Math.round((dish.weight * 100) + weight2).toFixed(0))
     ];
     result_in100g();
     if (isNaN(
@@ -120,6 +140,174 @@ function addIngridient()
         $("#ccal100_total_data2_res").val(0);
     }
 }
+
+function locStorage_his() {
+    var tbody_his = $('#tbody_his').html();
+    var H_id = idNumber_his;
+    var H_prots = $('#prots-his').val();
+    var H_fats = $('#fats-his').val();
+    var H_carbs = $('#carbs-his').val();
+    var H_weight = $('#weight-his').val();
+    var H_ccal = $('#ccals-his').val();
+
+    localStorage.setItem('tbody_his', tbody_his);
+    localStorage.setItem('H_id', H_id);
+    localStorage.setItem('H_prots', H_prots);
+    localStorage.setItem('H_fats', H_fats);
+    localStorage.setItem('H_carbs', H_carbs);
+    localStorage.setItem('H_weight', H_weight);
+    localStorage.setItem('H_ccal', H_ccal);
+
+
+}
+
+
+function gtStorage() {
+    var his = localStorage.getItem('tbody_his');
+    var id_his = localStorage.getItem('H_id');
+    var prots_his = localStorage.getItem('H_prots');
+    var fats_his = localStorage.getItem('H_fats');
+    var carbs_his = localStorage.getItem('H_carbs');
+    var weight_his = localStorage.getItem('H_weight');
+    var ccals_his = localStorage.getItem('H_ccal');
+
+    if (idNumber_his) {
+    idNumber_his = id_his;    
+    }
+    $('#tbody_his').html(his);
+    $('#prots-his').val(prots_his);
+    $('#fats-his').val(fats_his);
+    $('#carbs-his').val(carbs_his);
+    $('#weight-his').val(weight_his);
+    $('#ccals-his').val(ccals_his);
+}
+
+$(document).ready
+(function()
+{
+    gtStorage();
+})
+
+function add_history(){
+
+    var dish_his = [
+       idNumber_his,
+       $("#res_name_create").val(),
+       parseInt($("#prot_total_data2_res").val()),
+       parseInt($("#carbs_total_data2_res").val()),
+       parseInt($("#fats_total_data2_res").val()),
+       parseInt($("#weight_total_data2_res").val()),
+       parseInt($("#ccal_total_data2_res").val())
+
+    ];
+
+    var prots = parseInt($("#prots-his").val());
+    var fats = parseInt($("#fats-his").val());
+    var carbs = parseInt($("#carbs-his").val());
+    var weight = parseInt($("#weight-his").val());
+    var ccal = parseInt($("#ccals-his").val());
+
+    var table_his = $('#table_his');
+    var tr_his = document.createElement("tr");
+    var td_his;
+    for (var i = 0; i < 7; i++) {
+        td_his = document.createElement("td");
+        if (i >= 2) {
+            $(td_his).addClass('editable_his');
+        }
+        $(td_his).text(dish_his[i]);
+        tr_his.appendChild(td_his);
+    }
+    table_his.append(tr_his);
+    idNumber_his++;
+
+    $("#prots-his").val(prots+dish_his[2]);
+    $("#fats-his").val(fats+dish_his[3]);
+    $("#carbs-his").val(carbs+dish_his[4]);
+    $("#weight-his").val(weight+dish_his[5]);
+    $("#ccals-his").val(ccal+dish_his[6]);
+
+     if (isNaN(
+            $('.editable_his:eq(0)').text() &&
+            $('.editable_his:eq(1)').text() &&
+            $('.editable_his:eq(2)').text() &&
+            $('.editable_his:eq(3)').text() &&
+            $('.editable_his:eq(4)').text()
+        )) {
+        $(".editable_his:eq(0)").val(0);
+        $(".editable_his:eq(1)").val(0);
+        $(".editable_his:eq(2)").val(0);
+        $(".editable_his:eq(3)").val(0);
+        $(".editable_his:eq(4)").val(0);
+    }
+
+         if (isNaN(
+            $('#prots-his').text() &&
+            $('#fats-his').text() &&
+            $('#carbs-his').text() &&
+            $('#weight-his').text() &&
+            $('#ccals-his').text()
+        )) {
+        $('#prots-his').val(0);
+        $('#fats-his').val(0);
+        $('#carbs-his').val(0);
+        $('#weight-his').val(0);
+        $('#ccals-his').val(0);
+    }
+
+    locStorage_his();
+
+}
+
+$('#id_add_history').on("click", 
+function()
+{
+    add_history();
+})
+
+function Del_last_his() 
+{
+    var result_his = 
+    [
+        $("#prots-his").val(),
+        $("#fats-his").val(),
+        $("#carbs-his").val(),
+        $("#weight-his").val(),
+        $("#ccals-his").val()
+    ];
+    var tr_his_last = 
+    [
+        $('#tbody_his tr:last-child .editable_his:eq(0)').text(),
+        $('#tbody_his tr:last-child .editable_his:eq(1)').text(),
+        $('#tbody_his tr:last-child .editable_his:eq(2)').text(),
+        $('#tbody_his tr:last-child .editable_his:eq(3)').text(),
+        $('#tbody_his tr:last-child .editable_his:eq(4)').text()
+    ];
+    for (var i = 0; i < 5; i++) 
+    {
+        result_minus_tr[i] = result_his[i] - tr_his_last[i];
+    }
+    result = 
+    [
+        $("#prots-his").val(result_minus_tr[0]),
+        $("#fats-his").val(result_minus_tr[1]),
+        $("#carbs-his").val(result_minus_tr[2]),
+        $("#weight-his").val(result_minus_tr[3]),
+        $("#ccals-his").val(result_minus_tr[4])
+    ];
+    $('#tbody_his tr').last().remove();
+    if (idNumber_his != 1) {
+    idNumber_his -= 1;
+}
+    locStorage_his();
+
+}
+
+$('#del_last_his').on("click", 
+function()
+{
+    Del_last_his();
+})
 
 function Del_last() 
 {
@@ -166,32 +354,7 @@ function Del_last()
         $("#ccal100_total_data2_res").val(0);
     }
     $('#data2_body tr').last().remove();
-}
-
-function setStorage() 
-{
-    localStorage.setItem('A_prots', $('#total_data2 .td_total_data2:eq(0)').text());
-    localStorage.setItem('B_fats', $('#total_data2  .td_total_data2:eq(1)').text());
-    localStorage.setItem('C_carbs', $('#total_data2 .td_total_data2:eq(2)').text());
-    localStorage.setItem('D_weight', $('#total_data2 .td_total_data2:eq(3)').text());
-    localStorage.setItem('E_ccal', $('#total_data2  .td_total_data2:eq(4)').text());
-}
-
-function name() 
-{
-    $('#res_100').text($('#res_name_create').val());
-    localStorage.setItem('name', $('#res_name_create').val());
-}
-
-function getStorage() 
-{
-    $('#total_data2  .td_total_data2:eq(0)').text(localStorage.getItem('A_prots'));
-    $('#total_data2  .td_total_data2:eq(1)').text(localStorage.getItem('B_fats'));
-    $('#total_data2  .td_total_data2:eq(2)').text(localStorage.getItem('C_carbs'));
-    $('#total_data2  .td_total_data2:eq(3)').text(localStorage.getItem('D_weight'));
-    $('#total_data2  .td_total_data2:eq(4)').text(localStorage.getItem('E_ccal'));
-    Del_last();
-    name();
+    idNumber -= 1;
 }
 
 function calculate_data1_res() 
@@ -244,18 +407,19 @@ function Umbrien()
 
 function Clear_all() 
 {
+
     $('#res_name_create').val('');
-    $('#total_data2  .td_total_data2:eq(0)').text(0);
-    $('#total_data2  .td_total_data2:eq(1)').text(0);
-    $('#total_data2  .td_total_data2:eq(2)').text(0);
-    $('#total_data2  .td_total_data2:eq(3)').text(0);
-    $('#total_data2  .td_total_data2:eq(4)').text(0);
+    $('#prot_total_data2_res').text(0);
+    $('#fats_total_data2_res').text(0);
+    $('#carbs_total_data2_res').text(0);
+    $('#weight_total_data2_res').text(0);
+    $('#ccal_total_data2_res').text(0);
+
     $('#data2_body tr').remove();
     idNumber = 1
     name();
     result_in100g();
     Del_last();
-    setStorage();
 }
 
 function ajax_save_list()
@@ -296,11 +460,6 @@ function save_data1()
        })
 }
 
-$(document).ready(function()
-{
-    getStorage();
-})
-
 $('#id_clear_data1_res').on("click", 
 function()
 {
@@ -331,11 +490,6 @@ function(){
     Del_last();
 })
 
-$("#id_add_ingridient, #del_last_data2_res, #clear_all_data2 ").on("click", 
-function(){
-    setStorage();
-})
-
 $('#clear_all_data2').on("click", 
 function() {
     Clear_all();
@@ -345,6 +499,12 @@ $('#nav_versions').on('click',
 function(event) {
     event.preventDefault();
     open_versions();
+})
+
+$('#nav_history').on('click', 
+function(event) {
+    event.preventDefault();
+    open_history();
 })
 
 $('#nav_crmeal').on('click', 

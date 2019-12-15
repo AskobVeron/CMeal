@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <?php include 'includes/DB_connection.php';
+<?php include 'includes/DB_connection.php';
     $hacker_check = "SELECT * FROM `users` 
     WHERE token = '$_COOKIE[token]'";
     $hacker_check_query = 
@@ -50,9 +50,7 @@
     Я все понял и каюсь, прости меня, добрый программист
     </button></a>
     </form>';
-    exit();}?>
-
-    <header>
+    exit();}?><header>
         <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-dark menu">
             <div class="container-fluid">
                 <div id="triple-top">
@@ -75,26 +73,36 @@ margin-left: 10px;
 " id="nav_crmeal" class="brand acc_tab">' 
 . $row['login'] .
 '</a>';
-echo 
-'<a style="
+echo '<a style="
 margin-left: 10px;
-class="a_nav_tab" href="#" id="nav_saves">Сохранения</a>';
+class="a_nav_tab" href="#" id="nav_history" href="#">История</a><br>';
 } else
 {
 echo '<a class="a_nav_tab brand" href="#" id="nav_crmeal">CMeal</a>';
 }
-                    ?><div id="submenu">
+?><div id="submenu">
                         <ul>
-                            <li class="navbarli">
-                                <a class="under_menu" href="#" id="nav_versions" style="font-size: 14.5px;" target="blank">Версии</a>
+                            <li class="under_menu"><?php 
+
+if (isset($_COOKIE['token']))
+{
+echo 
+'<a class="navbarli under_menu" href="#" id="nav_saves">Сохранения</a><br>';
+}
+?></li>
+                            <li class="navbarli under_menu">
+                                <a href="#" id="nav_versions" style="font-size: 14.5px;" target="blank">Версии</a>
+
                             </li>
-                            <li class="navbarli"><?php 
+
+
+                            <li class="navbarli under_menu"><?php 
 
 if (isset($_COOKIE['token']))
 {
  echo '<a id="exit" href="pages/login/exit.php" class="">Выход</a>';
 }
-                            ?></li>
+?></li>
                         </ul>
                     </div>
                 </div><?php 
@@ -126,17 +134,19 @@ if (!isset($_COOKIE['token']))
             <hr>
             <button class="btn btn-outline-danger confirm-btn" id="no">Отмена</button> <button class="btn btn-outline-success confirm-btn" id="yes">Да</button>
         </div>
-        <?php 
+<?php 
              include('list_saves.php');
-             ?>
-    </div>
+?></div>
 
 
     <div id="versions">
-        <?php 
+<?php 
                 include('pages/versions/versions.php')
-                 ?>
-    </div>
+?></div>
+    <div id="history">
+<?php 
+                include('pages/history/history.php')
+?></div>
 
 
     <div id="body">
@@ -204,15 +214,15 @@ if (!isset($_COOKIE['token']))
                 </td>
             </tr>
         </table>
-        <button class="btn btn-outline-dark data1_buttons" id="id_clear_data1_res" name="clear">Очистить</button> <button class="btn btn-outline-primary data1_buttons" id="id_save_data1" name=
+        <button class="btn btn-outline-dark data1_buttons" id="id_clear_data1_res" name="clear">Очистить</button> <button class="btn btn-outline-primary save_buttons data1_buttons" id="id_save_data1" name=
         "save_data1" type="submit" value="Сохранить ↑↑">Сохранить ↑↑</button> <button class="btn btn-outline-success data1_buttons" id="id_add_ingridient">Добавить</button>
-
         <div id="save_response">
         </div>
 
         <hr>
-        <button class="btn btn-outline-dark data2_buttons" id="del_last_data2_res">Отменить</button> <button class="btn btn-outline-primary data2_buttons" id="id_save_data2" name="save_data2"
-        type="submit" value="Сохранить ↑↑">Сохранить ↓↓</button> <button class="btn btn-outline-danger data2_buttons" id="clear_all_data2">Очистить всё</button><br>
+        <button class="btn btn-outline-dark data2_buttons" id="del_last_data2_res">Отменить</button> <button class="btn btn-outline-primary save_buttons data2_buttons" id="id_save_data2" name="save_data2"
+        type="submit" value="Сохранить ↑↑">Сохранить ↓↓</button> <button class="btn btn-outline-danger data2_buttons" id="clear_all_data2">Очистить всё</button>
+         <button class="btn btn-outline-info" id="id_add_history">В Историю</button>
 
 
         <div class="table-responsive">
