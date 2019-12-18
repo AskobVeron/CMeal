@@ -1,4 +1,5 @@
 
+<div class="table-responsive">
 <table id="table_his" class="table table-striped">
   <thead class="thead-dark">
     <tr>
@@ -28,5 +29,5 @@
   <tbody id="tbody_his">
 </tbody>
 </table>
-
+</div>
 

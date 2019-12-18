@@ -13,7 +13,6 @@ function open_versions()
     $('#body').css({ 'display': 'none' });
     $('#saves').css({ 'display': 'none' });
     $('#history').css({ 'display': 'none' });
-    $('body').css({ 'background-color': '#F4F1F1' });
     $('#versions').css({ 'display': 'block' });
     $('#nav_crmeal').removeClass('active_nav');
     $('#nav_saves').removeClass('active_nav');
@@ -171,9 +170,10 @@ function gtStorage() {
     var weight_his = localStorage.getItem('H_weight');
     var ccals_his = localStorage.getItem('H_ccal');
 
-    if (idNumber_his) {
+    if (idNumber_his)
+{
     idNumber_his = id_his;    
-    }
+    
     $('#tbody_his').html(his);
     $('#prots-his').val(prots_his);
     $('#fats-his').val(fats_his);
@@ -181,11 +181,31 @@ function gtStorage() {
     $('#weight-his').val(weight_his);
     $('#ccals-his').val(ccals_his);
 }
+    if (his === null ||
+        id_his === null ||
+        prots_his === null ||
+        fats_his === null ||
+        carbs_his === null ||
+        weight_his === null ||
+        ccals_his === null
+        ) {
+    idNumber_his = 1;
+    $('#tbody_his').html();
+    $('#prots-his').val(0);
+    $('#fats-his').val(0);
+    $('#carbs-his').val(0);
+    $('#weight-his').val(0);
+    $('#ccals-his').val(0);
+    }
+}
 
 $(document).ready
 (function()
 {
     gtStorage();
+    $('#history').css({ 'display': 'none' });
+
+
 })
 
 function add_history(){
@@ -194,8 +214,8 @@ function add_history(){
        idNumber_his,
        $("#res_name_create").val(),
        parseInt($("#prot_total_data2_res").val()),
-       parseInt($("#carbs_total_data2_res").val()),
        parseInt($("#fats_total_data2_res").val()),
+       parseInt($("#carbs_total_data2_res").val()),
        parseInt($("#weight_total_data2_res").val()),
        parseInt($("#ccal_total_data2_res").val())
 
@@ -403,6 +423,11 @@ function Umbrien()
     }
     table.append(tr);
     idNumber++;
+}
+
+function name() {
+    var namr = $('#res_name_create').val()
+    $('#res_100').text(namr)
 }
 
 function Clear_all() 

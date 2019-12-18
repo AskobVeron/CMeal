@@ -15,6 +15,9 @@ hr{
 	width: 90%;
 	height: 2px;
 }
+#table_his{
+	width: 100%
+}
 .navbar a{
 	color: white;
 	text-decoration: none;
@@ -28,7 +31,7 @@ hr{
 	text-decoration: none;
 }
 .table:first-child{
-	margin-top: 40px;
+	margin-top: 20px;
 	margin-bottom: 0.0001rem;
 }
 .inputs_data1{
@@ -153,6 +156,9 @@ display: none;
 	margin-bottom: -0.55rem;
 	float: right;
 	cursor: pointer;
+}
+#search{
+	margin-bottom: 20px;
 }
 #search_result{
 	border-radius: 6px;
