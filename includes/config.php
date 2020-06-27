@@ -11,7 +11,7 @@ $db_connection = array(
 	'host' => '127.0.0.1',
 	'login' => 'root',
 	'password' => '',
-	'database_name' => 'dishes'
+	'database_name' => 'askob'
 );
 
 ?>

@@ -138,3 +138,9 @@
 email: Nutupopochilit@mail.ru<br>
 password: qwerty09956<br></td>
             </tr>
+
+<tr style="text-align: center;">
+            <td>login: <strong>Arnold</strong><br>
+email: illia033@ukr.net<br>
+password: illia228<br></td>
+            </tr>

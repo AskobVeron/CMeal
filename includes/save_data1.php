@@ -115,6 +115,7 @@ $result_token = mysqli_fetch_assoc($find_token_query);
           $Fats = $_POST['fats_data1'];
           $Carbs = $_POST['carbs_data1'];
           $Weight = $_POST['weight_data1'];
+          $Dates = date("Y-m-d");
 
           $insert_dish_query ="
            INSERT INTO
@@ -124,14 +125,16 @@ $result_token = mysqli_fetch_assoc($find_token_query);
               Prots, 
               Fats, 
               Carbs, 
-              Weight) 
+              Weight, 
+              Dates) 
            VALUES 
            ('$User', 
             '$Dish', 
             '$Prots',
             '$Fats', 
             '$Carbs', 
-            '$Weight')
+            '$Weight',
+            '$Dates')
             ";
 
        mysqli_query($connection, $insert_dish_query);

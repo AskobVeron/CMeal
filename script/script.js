@@ -221,6 +221,12 @@ function add_history(){
 
     ];
 
+    var row_num_data2 = $('#data2_body tr').length;
+    var second_name = $('#data2_body tr td:eq(1)').text();
+    if (row_num_data2 = 1) {
+        dish_his[1] = second_name;
+    }
+
     var prots = parseInt($("#prots-his").val());
     var fats = parseInt($("#fats-his").val());
     var carbs = parseInt($("#carbs-his").val());
