@@ -9,8 +9,8 @@ $db_connection_HOST = array(
 
 $db_connection = array(
 	'host' => '127.0.0.1',
-	'login' => 'root',
-	'password' => '',
+	'login' => 'mysql',
+	'password' => 'mysql',
 	'database_name' => 'askob'
 );
 

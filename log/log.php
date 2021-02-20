@@ -53,94 +53,29 @@
 		include 'navbar.php';
 
 		         ?>
-	</header>
+	</header><table class="table table-striped" style="margin-top: 55px;">
 
 
-	<table class="table table-striped" style="margin-top: 55px;">
-		<tr style="text-align: center;">
-			<td>login: <strong>Наташа</strong><br>
-			email: Tajjga787@ukr.net<br>
-			password: tajjgaoop<br></td>
-		</tr>
-
-
-		<tr style="text-align: center;">
-			<td>login: <strong>AskobVeron</strong><br>
-			email: twistedzing@gmail.com<br>
-			password: fbrqwe00<br></td>
-		</tr>
-
-
-		<tr style="text-align: center;">
-			<td>login: <strong>Asetsky</strong><br>
-			email: asetsky2018@gmail.com<br>
-			password: 03072002<br></td>
-		</tr>
-
-
-		<tr style="text-align: center;">
-			<td>login: <strong>TiLOX</strong><br>
-			email: oksanayaroshenko1980@gmail.com<br>
-			password: hjvtjj1324<br></td>
-		</tr>
-
-
-		<tr style="text-align: center;">
-			<td>login: <strong>holidayman</strong><br>
-			email: sosichlen@sosi.hui<br>
-			password: 12345678<br></td>
-		</tr>
-
-
-		<tr style="text-align: center;">
-			<td>login: <strong>Kochka_</strong><br>
-			email: saimonklark@gmail.com<br>
-			password: BVB09BVB09<br></td>
-		</tr>
-
-
-		<tr style="text-align: center;">
-			<td>login: <strong>nikita_lenov</strong><br>
-			email: hdjdjxjdh@hshdjd.com<br>
-			password: kokoko222<br></td>
-		</tr>
-
-
-		<tr style="text-align: center;">
-			<td>login: <strong>Ser Bob</strong><br>
-			email: djtourist11@gmail.com<br>
-			password: 1234567890<br></td>
-		</tr>
-
-
-		<tr style="text-align: center;">
-			<td>login: <strong>gerasickin19</strong><br>
-			email: gerasickinviktor@gmail.com<br>
-			wizard1973456<br></td>
-		</tr>
-
-
-		<tr style="text-align: center;">
-			<td>login: <strong>Debiljaka</strong><br>
-			email: huisos@gmail.com<br>
-			password: 12345687<br></td>
-		</tr>
-
-
-		<tr style="text-align: center;">
-			<td>login: <strong>NE Jugyl</strong><br>
-			email: 31012018kh@gmail.com<br>
-			password: Qwerty123<br></td>
+<tr style="text-align: center;">
+		<td>login: <strong>gerasickin19</strong><br>
+email: gerasickinviktor@gmail.com<br>
+wizard1973456<br></td>
 		</tr>
 
 <tr style="text-align: center;">
-            <td>login: <strong>Sosu Jopu</strong><br>
-email: Nutupopochilit@mail.ru<br>
-password: qwerty09956<br></td>
+            <td>login: <strong>PASHKXVSKYI</strong><br>
+email: egor.pashkovskyi602@gmail.com<br>
+password: 123Vetal4mo<br></td>
             </tr>
 
 <tr style="text-align: center;">
-            <td>login: <strong>Arnold</strong><br>
-email: illia033@ukr.net<br>
-password: illia228<br></td>
+            <td>login: <strong>privet</strong><br>
+email: max.shuldiner777@gmail.com<br>
+password: privet228<br></td>
+            </tr>
+
+<tr style="text-align: center;">
+            <td>login: <strong>Vlados</strong><br>
+email: vlad.fedorkin03@gmail.com<br>
+password: 0000000000<br></td>
             </tr>

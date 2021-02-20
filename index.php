@@ -69,8 +69,8 @@ if (isset($row['token']))
 {
 echo 
 '<a href="/" style="
-margin-left: 10px;
-" id="nav_crmeal" class="brand acc_tab">' 
+margin-left: 10px;"
+ id="nav_crmeal" class="brand acc_tab">' 
 . $row['login'] .
 '</a>';
 echo '<a style="

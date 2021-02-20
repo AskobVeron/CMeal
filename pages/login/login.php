@@ -98,7 +98,7 @@ if ( !isset($_COOKIE['key']) )
             <div class="form-group">
                 <label>Пароль</label> <input class="form-control" name="log_password" placeholder="Пароль" type="password">
             </div>
-            <button class="btn btn-outline-success" id="enter" name="submit" type="submit">Войти</button> <a href="../sign_up" id="reg">Регестрация</a>
+            <button class="btn btn-outline-success" id="enter" name="submit" type="submit">Войти</button> <a href="../sign_up" id="reg">Регистрация</a>
         </div>
 
 

@@ -212,7 +212,7 @@ function add_history(){
 
     var dish_his = [
        idNumber_his,
-       $("#res_name_create").val(),
+       $("#res_100").text(),
        parseInt($("#prot_total_data2_res").val()),
        parseInt($("#fats_total_data2_res").val()),
        parseInt($("#carbs_total_data2_res").val()),
@@ -222,9 +222,10 @@ function add_history(){
     ];
 
     var row_num_data2 = $('#data2_body tr').length;
-    var second_name = $('#data2_body tr td:eq(1)').text();
-    if (row_num_data2 = 1) {
-        dish_his[1] = second_name;
+    var first_row_name = $('#data2_body tr td:eq(1)').text();
+
+    if (row_num_data2 < 2) {
+        dish_his[1] = first_row_name;
     }
 
     var prots = parseInt($("#prots-his").val());

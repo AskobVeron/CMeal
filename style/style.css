@@ -61,10 +61,13 @@ hr{
 	margin-top: -11px;
 }
 .brand{
-	font-size: 20px;
+	font-size: 24px;
 }
 .a_nav_tab{
 	margin-left: 10px;
+}
+#nav_history {
+	font-size: 18px;
 }
 .card{
 	width: 18rem;
@@ -105,7 +108,7 @@ hr{
 	text-align: center;
 }
 .acc_tab{
-	margin-top: 0.5%;
+	margin-top: 10px;
 	margin-left: auto;
 	margin-bottom: auto;
 	height: auto;

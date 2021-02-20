@@ -44,7 +44,7 @@
                 <label>Пароль</label> <input class="form-control password" id="password" name="password" placeholder="Пароль" type="password"> <input class="form-control password" name="password2" placeholder=
                 "Введите пароль еще раз" type="password">
             </div>
-            <button class="btn btn-outline-primary" id="regestration" name="submit" type="submit">Зарегестрироваться</button> <a href="../login" id="login">Вход</a>
+            <button class="btn btn-outline-primary" id="regestration" name="submit" type="submit">Зарегистрироваться</button> <a href="../login" id="login">Вход</a>
         </div>
 
 
@@ -70,7 +70,7 @@
 
                 if (strlen($_POST['login']) > 12) 
                 {
-                $errors[] = 'Масксимальная длина логига 12 символов';
+                $errors[] = 'Максимальная длина логина 12 символов';
                 }
 
                 if (strlen($_POST['email']) > 50) 
@@ -155,13 +155,13 @@
                     color: green;
                     padding: 2%;  
                     ">
-                    Регестрация успешно завершена, '
+                    Регистрация успешно завершена, '
                      . $_POST['login'] . 
                      ' :)
                     </p>
                     </div>';
 
-                    // Регестрируем 
+                    // Регистрируем 
 
                     $login = mysqli_real_escape_string(
                         $connection,
